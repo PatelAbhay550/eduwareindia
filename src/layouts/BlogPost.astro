@@ -1,0 +1,189 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Layout from './Layout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import SocialShare from '../components/SocialShare.astro';
+import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
+import { Image } from 'astro:assets';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage, category, tags } = Astro.props;
+const keywords = tags || [];
+if (category) keywords.push(category);
+
+// Get the current URL for sharing
+const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+// Breadcrumb data
+const breadcrumbItems = [
+  { name: 'Home', url: '/' },
+  { name: 'Blog', url: '/blog' },
+  { name: title, url: Astro.url.pathname }
+];
+---
+
+<Layout 
+	title={title} 
+	description={description} 
+	image={heroImage}
+	keywords={keywords}
+	publishedTime={pubDate.toISOString()}
+	modifiedTime={updatedDate?.toISOString()}
+	type="article"
+>
+	<!-- Breadcrumb Schema -->
+	<BreadcrumbSchema items={breadcrumbItems} />
+	
+	<div class="container-narrow">
+		<article class="blog-post">
+			<header class="blog-header">
+				{heroImage && (
+					<div class="hero-image">
+						<Image 
+							src={heroImage} 
+							alt={title}
+							width={800}
+							height={400}
+							format="webp"
+							quality={85}
+						/>
+					</div>
+				)}
+				<div class="blog-meta">
+					{category && (
+						<span class="tag">{category}</span>
+					)}
+				</div>
+				<h1 class="blog-title">{title}</h1>
+				<div class="blog-date">
+					<FormattedDate date={pubDate} />
+					{updatedDate && (
+						<span class="updated">
+							(Updated <FormattedDate date={updatedDate} />)
+						</span>
+					)}
+				</div>
+			</header>
+			
+			<div class="blog-content">
+				<slot />
+			</div>
+			
+			<!-- Social Sharing -->
+			<SocialShare 
+				title={title}
+				description={description}
+				url={currentUrl}
+			/>
+			
+			{tags && tags.length > 0 && (
+				<footer class="blog-footer">
+					<div class="tags">
+						<h4>Tags:</h4>
+						<div class="tag-list">
+							{tags.map((tag) => (
+								<span class="tag">{tag}</span>
+							))}
+						</div>
+					</div>
+				</footer>
+			)}
+		</article>
+	</div>
+</Layout>
+
+<style>
+	.blog-post {
+		padding: 2rem 0;
+	}
+	
+	.blog-header {
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+	
+	.hero-image {
+		margin-bottom: 2rem;
+	}
+	
+	.hero-image img {
+		width: 100%;
+		height: 300px;
+		object-fit: cover;
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-lg);
+	}
+	
+	.blog-meta {
+		margin-bottom: 1rem;
+	}
+	
+	.blog-title {
+		font-size: var(--font-size-4xl);
+		margin-bottom: 1rem;
+		line-height: 1.1;
+	}
+	
+	.blog-date {
+		color: var(--text-muted);
+		font-size: var(--font-size-sm);
+	}
+	
+	.updated {
+		font-style: italic;
+	}
+	
+	.blog-content {
+		margin: 3rem 0;
+		line-height: 1.7;
+	}
+	
+	.blog-content :global(h2),
+	.blog-content :global(h3),
+	.blog-content :global(h4) {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+	}
+	
+	.blog-content :global(p) {
+		margin-bottom: 1.5rem;
+	}
+	
+	.blog-content :global(ul),
+	.blog-content :global(ol) {
+		margin: 1.5rem 0;
+		padding-left: 2rem;
+	}
+	
+	.blog-content :global(li) {
+		margin-bottom: 0.5rem;
+	}
+	
+	.blog-footer {
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 1px solid var(--border-light);
+	}
+	
+	.tags h4 {
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.tag-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	
+	@media (max-width: 768px) {
+		.blog-title {
+			font-size: var(--font-size-3xl);
+		}
+		
+		.hero-image img {
+			height: 200px;
+		}
+	}
+</style>

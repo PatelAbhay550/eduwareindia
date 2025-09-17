@@ -1,0 +1,91 @@
+---
+// Performance monitoring and Core Web Vitals reporting
+---
+
+<script is:inline>
+  // Core Web Vitals monitoring
+  function getCLS(onPerfEntry) {
+    if (typeof PerformanceObserver !== 'undefined') {
+      new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          if (!entry.hadRecentInput) {
+            onPerfEntry(entry);
+          }
+        }
+      }).observe({ type: 'layout-shift', buffered: true });
+    }
+  }
+
+  function getFID(onPerfEntry) {
+    if (typeof PerformanceObserver !== 'undefined') {
+      new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          onPerfEntry(entry);
+        }
+      }).observe({ type: 'first-input', buffered: true });
+    }
+  }
+
+  function getLCP(onPerfEntry) {
+    if (typeof PerformanceObserver !== 'undefined') {
+      new PerformanceObserver((entryList) => {
+        const entries = entryList.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        onPerfEntry(lastEntry);
+      }).observe({ type: 'largest-contentful-paint', buffered: true });
+    }
+  }
+
+  function getFCP(onPerfEntry) {
+    if (typeof PerformanceObserver !== 'undefined') {
+      new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          if (entry.name === 'first-contentful-paint') {
+            onPerfEntry(entry);
+          }
+        }
+      }).observe({ type: 'paint', buffered: true });
+    }
+  }
+
+  function getTTFB(onPerfEntry) {
+    if (typeof PerformanceObserver !== 'undefined') {
+      new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          onPerfEntry(entry);
+        }
+      }).observe({ type: 'navigation', buffered: true });
+    }
+  }
+
+  // Report to analytics (Google Analytics 4)
+  function sendToAnalytics(metric) {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', metric.name, {
+        event_category: 'Web Vitals',
+        event_label: metric.id,
+        value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
+        non_interaction: true,
+      });
+    }
+  }
+
+  // Initialize monitoring
+  getCLS(sendToAnalytics);
+  getFID(sendToAnalytics);
+  getLCP(sendToAnalytics);
+  getFCP(sendToAnalytics);
+  getTTFB(sendToAnalytics);
+
+  // Page load time
+  window.addEventListener('load', () => {
+    const loadTime = performance.now();
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'page_load_time', {
+        event_category: 'Performance',
+        value: Math.round(loadTime),
+        non_interaction: true,
+      });
+    }
+  });
+</script>

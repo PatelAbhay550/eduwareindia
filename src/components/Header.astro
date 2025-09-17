@@ -1,0 +1,25 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="header">
+	<div class="container">
+		<div class="header-content">
+			<a href="/" class="logo">
+				<img src="/logo_main.svg" alt="Eduware Logo" />
+				
+			</a>
+			<nav class="nav">
+				<HeaderLink href="/">Home</HeaderLink>
+				<HeaderLink href="/blog">Study</HeaderLink>
+				<HeaderLink href="/questions">Practice</HeaderLink>
+				<HeaderLink href="/about">About</HeaderLink>
+				
+			</nav>
+		</div>
+	</div>
+</header>
+
