@@ -1,0 +1,488 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts';
+
+const title = 'SSC JE (Junior Engineer) 2025 - Exam Pattern, Syllabus, Eligibility | Eduware';
+const description = 'Complete guide to SSC JE 2025 exam preparation. Get latest syllabus, exam pattern, eligibility criteria, salary details, and important notifications for Junior Engineer posts.';
+---
+
+<Layout title={title} description={description}>
+	<BaseHead title={title} description={description} />
+	<Header />
+	
+	<main class="container mx-auto px-4 py-8">
+		<!-- Breadcrumb -->
+		<nav class="mb-6 text-sm text-gray-600">
+			<a href="/" class="hover:text-blue-600">Home</a> /
+			<a href="/category/ssc-exams" class="hover:text-blue-600">SSC Exams</a> /
+			<span class="text-gray-900">SSC JE</span>
+		</nav>
+
+		<!-- Header Section -->
+		<div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 mb-8">
+			<h1 class="text-4xl font-bold mb-4">SSC JE (Junior Engineer) 2025</h1>
+			<p class="text-xl opacity-90 mb-6">Complete preparation guide for SSC Junior Engineer recruitment exam</p>
+			<div class="flex flex-wrap gap-4 text-sm">
+				<span class="bg-white/20 px-3 py-1 rounded-full">📊 Paper I: 200 Marks</span>
+				<span class="bg-white/20 px-3 py-1 rounded-full">📝 Paper II: 300 Marks</span>
+				<span class="bg-white/20 px-3 py-1 rounded-full">🎯 Total Posts: 1600+</span>
+				<span class="bg-white/20 px-3 py-1 rounded-full">💰 Salary: ₹35,400 - ₹1,12,400</span>
+			</div>
+		</div>
+
+		<!-- Tab Navigation -->
+		<div class="border-b border-gray-200 mb-8">
+			<nav class="flex space-x-8">
+				<button class="tab-button active py-2 px-1 border-b-2 border-blue-500 text-blue-600 font-medium" data-tab="overview">
+					Overview
+				</button>
+				<button class="tab-button py-2 px-1 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700" data-tab="syllabus">
+					Syllabus
+				</button>
+				<button class="tab-button py-2 px-1 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700" data-tab="eligibility">
+					Eligibility
+				</button>
+				<button class="tab-button py-2 px-1 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700" data-tab="salary">
+					Salary & Benefits
+				</button>
+				<button class="tab-button py-2 px-1 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700" data-tab="notifications">
+					Notifications
+				</button>
+			</nav>
+		</div>
+
+		<!-- Tab Content -->
+		<div class="tab-content">
+			<!-- Overview Tab -->
+			<div id="overview" class="tab-pane active">
+				<div class="grid md:grid-cols-2 gap-8">
+					<div class="space-y-6">
+						<div class="bg-white p-6 rounded-lg shadow-sm border">
+							<h3 class="text-xl font-bold mb-4 text-gray-900">📋 Exam Overview</h3>
+							<div class="space-y-3">
+								<div class="flex justify-between">
+									<span class="text-gray-600">Exam Name:</span>
+									<span class="font-medium">SSC Junior Engineer</span>
+								</div>
+								<div class="flex justify-between">
+									<span class="text-gray-600">Conducting Body:</span>
+									<span class="font-medium">Staff Selection Commission</span>
+								</div>
+								<div class="flex justify-between">
+									<span class="text-gray-600">Exam Mode:</span>
+									<span class="font-medium">Online (CBT)</span>
+								</div>
+								<div class="flex justify-between">
+									<span class="text-gray-600">Exam Duration:</span>
+									<span class="font-medium">Paper I: 2 Hours, Paper II: 2 Hours</span>
+								</div>
+								<div class="flex justify-between">
+									<span class="text-gray-600">Negative Marking:</span>
+									<span class="font-medium">0.25 marks per wrong answer</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="bg-white p-6 rounded-lg shadow-sm border">
+							<h3 class="text-xl font-bold mb-4 text-gray-900">📊 Exam Pattern</h3>
+							<div class="overflow-x-auto">
+								<table class="w-full text-sm">
+									<thead>
+										<tr class="border-b">
+											<th class="text-left py-2">Paper</th>
+											<th class="text-left py-2">Subject</th>
+											<th class="text-left py-2">Questions</th>
+											<th class="text-left py-2">Marks</th>
+										</tr>
+									</thead>
+									<tbody class="space-y-2">
+										<tr class="border-b">
+											<td class="py-2 font-medium">Paper I</td>
+											<td class="py-2">General Intelligence & Reasoning</td>
+											<td class="py-2">50</td>
+											<td class="py-2">50</td>
+										</tr>
+										<tr class="border-b">
+											<td class="py-2"></td>
+											<td class="py-2">General Awareness</td>
+											<td class="py-2">50</td>
+											<td class="py-2">50</td>
+										</tr>
+										<tr class="border-b">
+											<td class="py-2"></td>
+											<td class="py-2">General Engineering</td>
+											<td class="py-2">100</td>
+											<td class="py-2">100</td>
+										</tr>
+										<tr class="border-b">
+											<td class="py-2 font-medium">Paper II</td>
+											<td class="py-2">Civil/Mechanical/Electrical Engineering</td>
+											<td class="py-2">150</td>
+											<td class="py-2">300</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="space-y-6">
+						<div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+							<h3 class="text-xl font-bold mb-4 text-blue-900">🎯 Key Highlights</h3>
+							<ul class="space-y-2 text-blue-800">
+								<li class="flex items-start">
+									<span class="text-blue-600 mr-2">•</span>
+									<span>Two-tier examination (Paper I & Paper II)</span>
+								</li>
+								<li class="flex items-start">
+									<span class="text-blue-600 mr-2">•</span>
+									<span>Central Government job opportunity</span>
+								</li>
+								<li class="flex items-start">
+									<span class="text-blue-600 mr-2">•</span>
+									<span>Technical posts in Civil, Mechanical, Electrical</span>
+								</li>
+								<li class="flex items-start">
+									<span class="text-blue-600 mr-2">•</span>
+									<span>Good salary with career growth prospects</span>
+								</li>
+								<li class="flex items-start">
+									<span class="text-blue-600 mr-2">•</span>
+									<span>Job security and government benefits</span>
+								</li>
+							</ul>
+						</div>
+
+						<div class="bg-green-50 p-6 rounded-lg border border-green-200">
+							<h3 class="text-xl font-bold mb-4 text-green-900">📈 Selection Process</h3>
+							<ol class="space-y-2 text-green-800">
+								<li class="flex items-start">
+									<span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">1</span>
+									<span>Paper I (Screening Test)</span>
+								</li>
+								<li class="flex items-start">
+									<span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">2</span>
+									<span>Paper II (Technical Test)</span>
+								</li>
+								<li class="flex items-start">
+									<span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">3</span>
+									<span>Document Verification</span>
+								</li>
+								<li class="flex items-start">
+									<span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">4</span>
+									<span>Medical Examination</span>
+								</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Syllabus Tab -->
+			<div id="syllabus" class="tab-pane hidden">
+				<div class="bg-white p-6 rounded-lg shadow-sm border">
+					<div class="text-center mb-6">
+						<h3 class="text-2xl font-bold text-gray-900 mb-2">Complete SSC JE Syllabus</h3>
+						<p class="text-gray-600">Detailed syllabus for both Paper I and Paper II</p>
+					</div>
+					<div class="text-center">
+						<a href="/category/ssc-exams/ssc-je/syllabus" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+							<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+							</svg>
+							View Detailed Syllabus
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Eligibility Tab -->
+			<div id="eligibility" class="tab-pane hidden">
+				<div class="grid md:grid-cols-2 gap-8">
+					<div class="bg-white p-6 rounded-lg shadow-sm border">
+						<h3 class="text-xl font-bold mb-4 text-gray-900">🎓 Educational Qualification</h3>
+						<ul class="space-y-3 text-gray-700">
+							<li class="flex items-start">
+								<span class="text-green-600 mr-2">✓</span>
+								<span><strong>Civil Engineering:</strong> Diploma/Degree in Civil Engineering</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-green-600 mr-2">✓</span>
+								<span><strong>Mechanical Engineering:</strong> Diploma/Degree in Mechanical Engineering</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-green-600 mr-2">✓</span>
+								<span><strong>Electrical Engineering:</strong> Diploma/Degree in Electrical Engineering</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-green-600 mr-2">✓</span>
+								<span><strong>Electronics & Telecom:</strong> Diploma/Degree in Electronics & Telecommunication</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="bg-white p-6 rounded-lg shadow-sm border">
+						<h3 class="text-xl font-bold mb-4 text-gray-900">📅 Age Limit</h3>
+						<div class="space-y-3">
+							<div class="flex justify-between items-center">
+								<span class="text-gray-600">General/EWS:</span>
+								<span class="font-medium">18-32 years</span>
+							</div>
+							<div class="flex justify-between items-center">
+								<span class="text-gray-600">OBC:</span>
+								<span class="font-medium">18-35 years</span>
+							</div>
+							<div class="flex justify-between items-center">
+								<span class="text-gray-600">SC/ST:</span>
+								<span class="font-medium">18-37 years</span>
+							</div>
+							<div class="flex justify-between items-center">
+								<span class="text-gray-600">PwD (General):</span>
+								<span class="font-medium">18-42 years</span>
+							</div>
+							<div class="flex justify-between items-center">
+								<span class="text-gray-600">PwD (OBC):</span>
+								<span class="font-medium">18-45 years</span>
+							</div>
+							<div class="flex justify-between items-center">
+								<span class="text-gray-600">PwD (SC/ST):</span>
+								<span class="font-medium">18-47 years</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-8 bg-amber-50 p-6 rounded-lg border border-amber-200">
+					<h3 class="text-xl font-bold mb-4 text-amber-900">ℹ️ Important Notes</h3>
+					<ul class="space-y-2 text-amber-800">
+						<li class="flex items-start">
+							<span class="text-amber-600 mr-2">•</span>
+							<span>Age is calculated as on the closing date of online application</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-amber-600 mr-2">•</span>
+							<span>Relaxation in age limit as per government norms</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-amber-600 mr-2">•</span>
+							<span>Both diploma and degree holders are eligible</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-amber-600 mr-2">•</span>
+							<span>Final year students can also apply (provisional)</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Salary Tab -->
+			<div id="salary" class="tab-pane hidden">
+				<div class="grid md:grid-cols-2 gap-8">
+					<div class="bg-white p-6 rounded-lg shadow-sm border">
+						<h3 class="text-xl font-bold mb-4 text-gray-900">💰 Salary Structure</h3>
+						<div class="space-y-4">
+							<div class="bg-green-50 p-4 rounded-lg">
+								<h4 class="font-semibold text-green-900 mb-2">Pay Scale</h4>
+								<p class="text-2xl font-bold text-green-700">₹35,400 - ₹1,12,400</p>
+								<p class="text-sm text-green-600 mt-1">Level 6 in Pay Matrix</p>
+							</div>
+							<div class="space-y-3">
+								<div class="flex justify-between">
+									<span class="text-gray-600">Basic Pay:</span>
+									<span class="font-medium">₹35,400</span>
+								</div>
+								<div class="flex justify-between">
+									<span class="text-gray-600">HRA (Metro):</span>
+									<span class="font-medium">₹8,496</span>
+								</div>
+								<div class="flex justify-between">
+									<span class="text-gray-600">DA (Current):</span>
+									<span class="font-medium">₹12,744</span>
+								</div>
+								<div class="flex justify-between border-t pt-2">
+									<span class="text-gray-900 font-semibold">Gross Salary:</span>
+									<span class="font-bold text-green-600">₹56,640</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="bg-white p-6 rounded-lg shadow-sm border">
+						<h3 class="text-xl font-bold mb-4 text-gray-900">🎁 Additional Benefits</h3>
+						<ul class="space-y-3 text-gray-700">
+							<li class="flex items-start">
+								<span class="text-blue-600 mr-2">🏥</span>
+								<span>Medical facilities for self and family</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-blue-600 mr-2">🏠</span>
+								<span>Government accommodation or HRA</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-blue-600 mr-2">🚗</span>
+								<span>Transport allowance/facility</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-blue-600 mr-2">📚</span>
+								<span>Children education allowance</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-blue-600 mr-2">🎯</span>
+								<span>Leave travel concession</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-blue-600 mr-2">💼</span>
+								<span>Provident fund & pension benefits</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-blue-600 mr-2">🏆</span>
+								<span>Job security and career growth</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="mt-8 bg-blue-50 p-6 rounded-lg border border-blue-200">
+					<h3 class="text-xl font-bold mb-4 text-blue-900">📈 Career Progression</h3>
+					<div class="grid md:grid-cols-3 gap-4">
+						<div class="text-center">
+							<div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">1</div>
+							<h4 class="font-semibold">Junior Engineer</h4>
+							<p class="text-sm text-blue-700">₹35,400 - ₹1,12,400</p>
+						</div>
+						<div class="text-center">
+							<div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">2</div>
+							<h4 class="font-semibold">Assistant Engineer</h4>
+							<p class="text-sm text-blue-700">₹44,900 - ₹1,42,400</p>
+						</div>
+						<div class="text-center">
+							<div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">3</div>
+							<h4 class="font-semibold">Executive Engineer</h4>
+							<p class="text-sm text-blue-700">₹56,100 - ₹1,77,500</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Notifications Tab -->
+			<div id="notifications" class="tab-pane hidden">
+				<div class="space-y-6">
+					<div class="bg-white p-6 rounded-lg shadow-sm border">
+						<h3 class="text-xl font-bold mb-4 text-gray-900">🔔 Latest Notifications</h3>
+						<div class="space-y-4">
+							<div class="border-l-4 border-blue-500 pl-4 py-2">
+								<h4 class="font-semibold text-blue-900">SSC JE 2024 Result Declared</h4>
+								<p class="text-gray-600 text-sm">Paper I result has been declared. Check your result on official website.</p>
+								<span class="text-xs text-gray-500">15 Dec 2024</span>
+							</div>
+							<div class="border-l-4 border-green-500 pl-4 py-2">
+								<h4 class="font-semibold text-green-900">SSC JE 2025 Notification Expected</h4>
+								<p class="text-gray-600 text-sm">SSC JE 2025 notification is expected to be released in March 2025.</p>
+								<span class="text-xs text-gray-500">10 Dec 2024</span>
+							</div>
+							<div class="border-l-4 border-orange-500 pl-4 py-2">
+								<h4 class="font-semibold text-orange-900">Document Verification Schedule</h4>
+								<p class="text-gray-600 text-sm">Document verification for qualified candidates will start from 20 Dec 2024.</p>
+								<span class="text-xs text-gray-500">8 Dec 2024</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="bg-white p-6 rounded-lg shadow-sm border">
+						<h3 class="text-xl font-bold mb-4 text-gray-900">📅 Important Dates</h3>
+						<div class="grid md:grid-cols-2 gap-6">
+							<div>
+								<h4 class="font-semibold mb-3 text-gray-800">SSC JE 2024</h4>
+								<div class="space-y-2 text-sm">
+									<div class="flex justify-between">
+										<span class="text-gray-600">Paper I Exam:</span>
+										<span class="font-medium">Completed</span>
+									</div>
+									<div class="flex justify-between">
+										<span class="text-gray-600">Paper I Result:</span>
+										<span class="font-medium">15 Dec 2024</span>
+									</div>
+									<div class="flex justify-between">
+										<span class="text-gray-600">Paper II Exam:</span>
+										<span class="font-medium">25 Dec 2024</span>
+									</div>
+								</div>
+							</div>
+							<div>
+								<h4 class="font-semibold mb-3 text-gray-800">SSC JE 2025 (Expected)</h4>
+								<div class="space-y-2 text-sm">
+									<div class="flex justify-between">
+										<span class="text-gray-600">Notification:</span>
+										<span class="font-medium">March 2025</span>
+									</div>
+									<div class="flex justify-between">
+										<span class="text-gray-600">Application Start:</span>
+										<span class="font-medium">March 2025</span>
+									</div>
+									<div class="flex justify-between">
+										<span class="text-gray-600">Application End:</span>
+										<span class="font-medium">April 2025</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Related Content -->
+		<div class="mt-12">
+			<h2 class="text-2xl font-bold mb-6 text-gray-900">Related Content</h2>
+			<div class="grid md:grid-cols-3 gap-6">
+				<a href="/category/ssc-exams/ssc-cgl" class="block bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+					<h3 class="font-semibold text-gray-900 mb-2">SSC CGL</h3>
+					<p class="text-gray-600 text-sm">Combined Graduate Level Examination</p>
+				</a>
+				<a href="/category/ssc-exams/ssc-chsl" class="block bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+					<h3 class="font-semibold text-gray-900 mb-2">SSC CHSL</h3>
+					<p class="text-gray-600 text-sm">Combined Higher Secondary Level</p>
+				</a>
+				<a href="/category/ssc-exams/ssc-cpo" class="block bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+					<h3 class="font-semibold text-gray-900 mb-2">SSC CPO</h3>
+					<p class="text-gray-600 text-sm">Central Police Organization</p>
+				</a>
+			</div>
+		</div>
+	</main>
+
+	<Footer />
+
+	<script>
+		// Tab switching functionality
+		document.addEventListener('DOMContentLoaded', function() {
+			const tabButtons = document.querySelectorAll('.tab-button');
+			const tabPanes = document.querySelectorAll('.tab-pane');
+
+			tabButtons.forEach(button => {
+				button.addEventListener('click', () => {
+					const targetTab = button.getAttribute('data-tab');
+
+					// Remove active class from all buttons and panes
+					tabButtons.forEach(btn => {
+						btn.classList.remove('active', 'border-blue-500', 'text-blue-600');
+						btn.classList.add('border-transparent');
+					});
+					tabPanes.forEach(pane => {
+						pane.classList.add('hidden');
+						pane.classList.remove('active');
+					});
+
+					// Add active class to clicked button and corresponding pane
+					button.classList.add('active', 'border-blue-500', 'text-blue-600');
+					button.classList.remove('border-transparent');
+					document.getElementById(targetTab).classList.remove('hidden');
+					document.getElementById(targetTab).classList.add('active');
+				});
+			});
+		});
+	</script>
+</Layout>

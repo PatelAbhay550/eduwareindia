@@ -1,0 +1,640 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../../components/FormattedDate.astro';
+
+// SSC exam subcategories
+const sscExams = [
+	{
+		name: 'SSC CGL',
+		slug: 'ssc-cgl',
+		description: 'Combined Graduate Level',
+		posts: 'Assistant Section Officer, Inspector, Auditor',
+		eligibility: 'Bachelor\'s Degree',
+		ageLimit: '18-32 years',
+		status: 'Notification Expected',
+		vacancies: '17,727+',
+		examDates: 'June 2025 - July 2025'
+	},
+	{
+		name: 'SSC CHSL',
+		slug: 'ssc-chsl',
+		description: 'Combined Higher Secondary Level',
+		posts: 'LDC, JSA, PA, SA, DEO',
+		eligibility: '12th Pass',
+		ageLimit: '18-27 years',
+		status: 'Notification Expected',
+		vacancies: '4,500+',
+		examDates: 'August 2025 - September 2025'
+	},
+	{
+		name: 'SSC MTS',
+		slug: 'ssc-mts',
+		description: 'Multi-Tasking Staff',
+		posts: 'Peon, Daftary, Jamadar, Watchman',
+		eligibility: '10th Pass',
+		ageLimit: '18-25 years',
+		status: 'Notification Expected',
+		vacancies: '9,000+',
+		examDates: 'September 2025 - October 2025'
+	},
+	{
+		name: 'SSC GD',
+		slug: 'ssc-gd',
+		description: 'General Duty Constable',
+		posts: 'Constable in CAPF, NIA, SPG, RPF',
+		eligibility: '10th Pass',
+		ageLimit: '18-23 years',
+		status: 'Notification Expected',
+		vacancies: '45,000+',
+		examDates: 'December 2025 - January 2026'
+	},
+	{
+		name: 'SSC JE',
+		slug: 'ssc-je',
+		description: 'Junior Engineer',
+		posts: 'JE in Civil, Mechanical, Electrical',
+		eligibility: 'Diploma/Degree in Engineering',
+		ageLimit: '18-32 years',
+		status: 'Notification Expected',
+		vacancies: '1,600+',
+		examDates: 'March 2025 - April 2025'
+	},
+	{
+		name: 'SSC CPO',
+		slug: 'ssc-cpo',
+		description: 'Central Police Organization',
+		posts: 'Sub Inspector in CAPF, CISF, Delhi Police',
+		eligibility: 'Bachelor\'s Degree',
+		ageLimit: '20-25 years',
+		status: 'Notification Expected',
+		vacancies: '4,200+',
+		examDates: 'February 2025 - March 2025'
+	},
+	{
+		name: 'SSC JE',
+		slug: 'ssc-je',
+		description: 'Junior Engineer',
+		posts: 'Junior Engineer (Civil, Mechanical, Electrical)',
+		eligibility: 'Diploma/B.Tech',
+		ageLimit: '18-32 years',
+		status: 'Result Declared',
+		vacancies: '1,800+',
+		examDates: 'Completed'
+	},
+	{
+		name: 'SSC CPO',
+		slug: 'ssc-cpo',
+		description: 'Central Police Organization',
+		posts: 'Sub Inspector in Delhi Police, CAPF',
+		eligibility: 'Bachelor\'s Degree',
+		ageLimit: '20-25 years',
+		status: 'Notification Expected',
+		vacancies: '4,200+',
+		examDates: 'November 2025 - December 2025'
+	}
+];
+
+// Get related blog posts and questions
+const allBlogPosts = await getCollection('blog');
+const allQuestions = await getCollection('questions');
+
+const sscPosts = allBlogPosts.filter(post => 
+	post.data.category === 'SSC Exams' || 
+	post.data.tags?.some(tag => tag.toLowerCase().includes('ssc'))
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const sscQuestions = allQuestions.filter(question => 
+	question.data.category === 'SSC Exams' || 
+	question.data.tags?.some(tag => tag.toLowerCase().includes('ssc'))
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout 
+	title="SSC Exams - Complete Guide & Preparation | Eduware"
+	description="Master all SSC exams including CGL, CHSL, MTS, GD, JE, CPO with comprehensive study materials, syllabus, and practice questions."
+	keywords={['SSC exams', 'SSC CGL', 'SSC CHSL', 'SSC MTS', 'SSC GD', 'SSC JE', 'staff selection commission']}
+>
+	<div class="container">
+		<header class="page-header">
+			<h1>SSC Exams - Staff Selection Commission</h1>
+			<p>Complete preparation guide for all SSC examinations</p>
+		</header>
+
+		<!-- Quick Stats -->
+		<div class="stats-section">
+			<div class="stats-grid">
+				<div class="stat-card">
+					<div class="stat-number">{sscExams.length}</div>
+					<div class="stat-label">SSC Exams</div>
+				</div>
+				<div class="stat-card">
+					<div class="stat-number">{sscPosts.length}</div>
+					<div class="stat-label">Study Materials</div>
+				</div>
+				<div class="stat-card">
+					<div class="stat-number">{sscQuestions.length}</div>
+					<div class="stat-label">Practice Questions</div>
+				</div>
+				<div class="stat-card">
+					<div class="stat-number">50L+</div>
+					<div class="stat-label">Annual Vacancies</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- SSC Exams Grid -->
+		<section class="exams-section">
+			<h2>Popular SSC Examinations</h2>
+			<div class="exams-grid">
+				{sscExams.map((exam) => (
+					<div class="exam-card">
+						<div class="exam-header">
+							<h3><a href={`/category/ssc-exams/${exam.slug}`}>{exam.name}</a></h3>
+							<span class={`status-badge status-${exam.status.toLowerCase().replace(' ', '-')}`}>
+								{exam.status}
+							</span>
+						</div>
+						<p class="exam-description">{exam.description}</p>
+						<div class="exam-details">
+							<div class="detail-item">
+								<strong>Posts:</strong> {exam.posts}
+							</div>
+							<div class="detail-item">
+								<strong>Eligibility:</strong> {exam.eligibility}
+							</div>
+							<div class="detail-item">
+								<strong>Age Limit:</strong> {exam.ageLimit}
+							</div>
+							{exam.vacancies && (
+								<div class="detail-item">
+									<strong>Vacancies:</strong> {exam.vacancies}
+								</div>
+							)}
+							{exam.examDates && (
+								<div class="detail-item">
+									<strong>Exam Dates:</strong> {exam.examDates}
+								</div>
+							)}
+						</div>
+						<div class="exam-actions">
+							<a href={`/category/ssc-exams/${exam.slug}`} class="btn btn-primary">View Details</a>
+							<a href={`/category/ssc-exams/${exam.slug}/syllabus`} class="btn btn-secondary">Syllabus</a>
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- Latest Study Materials -->
+		{sscPosts.length > 0 && (
+			<section class="materials-section">
+				<div class="section-header">
+					<h2>Latest Study Materials</h2>
+					<a href="/blog?category=ssc-exams" class="btn btn-outline">View All</a>
+				</div>
+				<div class="materials-grid">
+					{sscPosts.slice(0, 6).map((post) => (
+						<article class="material-card">
+							<div class="card-content">
+								{post.data.tags && (
+									<div class="tags">
+										{post.data.tags.slice(0, 2).map((tag) => (
+											<span class="tag">{tag}</span>
+										))}
+									</div>
+								)}
+								<h3 class="card-title">
+									<a href={`/blog/${post.data.slug || post.id}/`}>{post.data.title}</a>
+								</h3>
+								<p class="card-description">{post.data.description}</p>
+								<div class="card-meta">
+									<FormattedDate date={post.data.pubDate} />
+									{post.data.readingTime && (
+										<span class="reading-time">{post.data.readingTime} min read</span>
+									)}
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+		)}
+
+		<!-- Practice Questions -->
+		{sscQuestions.length > 0 && (
+			<section class="questions-section">
+				<div class="section-header">
+					<h2>Practice Questions</h2>
+					<a href="/questions?category=ssc-exams" class="btn btn-outline">View All</a>
+				</div>
+				<div class="questions-grid">
+					{sscQuestions.slice(0, 4).map((question) => (
+						<article class="question-card">
+							<div class="question-header">
+								{question.data.difficulty && (
+									<span class={`difficulty-badge difficulty-${question.data.difficulty.toLowerCase()}`}>
+										{question.data.difficulty}
+									</span>
+								)}
+							</div>
+							<h3 class="question-title">
+								<a href={`/questions/${question.slug}/`}>{question.data.title}</a>
+							</h3>
+							<p class="question-description">{question.data.description}</p>
+							<div class="question-meta">
+								<FormattedDate date={question.data.pubDate} />
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+		)}
+
+		<!-- Important Information -->
+		<section class="info-section">
+			<h2>Important Information</h2>
+			<div class="info-grid">
+				<div class="info-card">
+					<h3>📅 Exam Calendar 2025</h3>
+					<ul>
+						<li>SSC CGL 2024 - Result Expected in Jan 2025</li>
+						<li>SSC CHSL 2024 - Tier 2 in Feb 2025</li>
+						<li>SSC MTS 2024 - Document Verification ongoing</li>
+						<li>SSC GD 2025 - Notification expected in March</li>
+					</ul>
+				</div>
+				<div class="info-card">
+					<h3>📊 Selection Process</h3>
+					<ul>
+						<li><strong>Tier 1:</strong> Computer Based Test (Objective)</li>
+						<li><strong>Tier 2:</strong> Computer Based Test (Descriptive)</li>
+						<li><strong>Tier 3:</strong> Skill Test/Computer Proficiency Test</li>
+						<li><strong>Final:</strong> Document Verification & Medical</li>
+					</ul>
+				</div>
+				<div class="info-card">
+					<h3>💡 Preparation Tips</h3>
+					<ul>
+						<li>Start with NCERT books for basic concepts</li>
+						<li>Practice previous year questions regularly</li>
+						<li>Take mock tests to improve speed</li>
+						<li>Focus on current affairs for last 6 months</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style>
+	.page-header {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+	
+	.page-header h1 {
+		font-size: var(--font-size-4xl);
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.page-header p {
+		font-size: var(--font-size-lg);
+		color: var(--text-secondary);
+	}
+	
+	.stats-section {
+		margin-bottom: 3rem;
+	}
+	
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+		gap: 1.5rem;
+	}
+	
+	.stat-card {
+		background: var(--bg-secondary);
+		padding: 2rem 1rem;
+		border-radius: var(--radius-lg);
+		text-align: center;
+		border: 1px solid var(--border-light);
+	}
+	
+	.stat-number {
+		display: block;
+		font-size: var(--font-size-3xl);
+		font-weight: 700;
+		color: var(--primary);
+		margin-bottom: 0.5rem;
+	}
+	
+	.stat-label {
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+		font-weight: 500;
+	}
+	
+	.exams-section,
+	.materials-section,
+	.questions-section,
+	.info-section {
+		margin-bottom: 4rem;
+	}
+	
+	.exams-section h2,
+	.materials-section h2,
+	.questions-section h2,
+	.info-section h2 {
+		font-size: var(--font-size-3xl);
+		margin-bottom: 2rem;
+		color: var(--text-primary);
+		text-align: center;
+	}
+	
+	.section-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 2rem;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	
+	.section-header h2 {
+		margin-bottom: 0;
+		text-align: left;
+	}
+	
+	.exams-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+	
+	.exam-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		transition: all 0.2s ease;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.exam-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+	}
+	
+	.exam-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 1rem;
+		gap: 1rem;
+	}
+	
+	.exam-header h3 {
+		margin: 0;
+		font-size: var(--font-size-xl);
+	}
+	
+	.exam-header h3 a {
+		color: var(--text-primary);
+		text-decoration: none;
+	}
+	
+	.exam-header h3 a:hover {
+		color: var(--primary);
+	}
+	
+	.status-badge {
+		padding: 0.25rem 0.75rem;
+		border-radius: var(--radius-lg);
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		white-space: nowrap;
+	}
+	
+	.status-notification-expected,
+	.status-upcoming {
+		background: #fef3c7;
+		color: #92400e;
+	}
+	
+	.status-application-open {
+		background: #dcfce7;
+		color: #166534;
+	}
+	
+	.status-result-awaited,
+	.status-result-declared {
+		background: #dbeafe;
+		color: #1d4ed8;
+	}
+	
+	.exam-description {
+		color: var(--text-secondary);
+		margin-bottom: 1.5rem;
+		line-height: 1.6;
+	}
+	
+	.exam-details {
+		margin-bottom: 1.5rem;
+	}
+	
+	.detail-item {
+		margin-bottom: 0.5rem;
+		font-size: var(--font-size-sm);
+		color: var(--text-secondary);
+	}
+	
+	.detail-item strong {
+		color: var(--text-primary);
+	}
+	
+	.exam-actions {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+	
+	.materials-grid,
+	.questions-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	
+	.material-card,
+	.question-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 1.5rem;
+		transition: all 0.2s ease;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.material-card:hover,
+	.question-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+	}
+	
+	.tags {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+		flex-wrap: wrap;
+	}
+	
+	.tag {
+		background: var(--bg-secondary);
+		color: var(--text-muted);
+		padding: 0.25rem 0.5rem;
+		border-radius: var(--radius);
+		font-size: var(--font-size-xs);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	
+	.question-header {
+		margin-bottom: 1rem;
+	}
+	
+	.difficulty-badge {
+		padding: 0.25rem 0.75rem;
+		border-radius: var(--radius-lg);
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	
+	.difficulty-easy {
+		background: #dcfce7;
+		color: #166534;
+	}
+	
+	.difficulty-medium {
+		background: #fef3c7;
+		color: #92400e;
+	}
+	
+	.difficulty-hard {
+		background: #fee2e2;
+		color: #991b1b;
+	}
+	
+	.card-title a,
+	.question-title a {
+		color: var(--text-primary);
+		text-decoration: none;
+		font-size: var(--font-size-lg);
+		font-weight: 600;
+	}
+	
+	.card-title a:hover,
+	.question-title a:hover {
+		color: var(--primary);
+	}
+	
+	.card-description,
+	.question-description {
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin: 0.5rem 0 1rem 0;
+	}
+	
+	.card-meta,
+	.question-meta {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+	}
+	
+	.reading-time {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	
+	.info-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	
+	.info-card {
+		background: var(--bg-secondary);
+		padding: 2rem;
+		border-radius: var(--radius-lg);
+		border-left: 4px solid var(--primary);
+	}
+	
+	.info-card h3 {
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+		font-size: var(--font-size-lg);
+	}
+	
+	.info-card ul {
+		list-style: none;
+		padding: 0;
+	}
+	
+	.info-card li {
+		padding: 0.5rem 0;
+		color: var(--text-secondary);
+		border-bottom: 1px solid var(--border-light);
+		position: relative;
+		padding-left: 1rem;
+	}
+	
+	.info-card li:before {
+		content: "•";
+		color: var(--primary);
+		font-weight: bold;
+		position: absolute;
+		left: 0;
+	}
+	
+	.info-card li:last-child {
+		border-bottom: none;
+	}
+	
+	.info-card strong {
+		color: var(--text-primary);
+	}
+	
+	@media (max-width: 768px) {
+		.exams-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.materials-grid,
+		.questions-grid,
+		.info-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.section-header {
+			flex-direction: column;
+			align-items: stretch;
+		}
+		
+		.section-header h2 {
+			text-align: center;
+		}
+		
+		.exam-actions {
+			justify-content: center;
+		}
+	}
+</style>

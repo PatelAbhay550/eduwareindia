@@ -1,0 +1,1001 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+
+// IBPS PO Syllabus Data
+const syllabusData = {
+  preliminary: {
+    sections: [
+      {
+        name: 'English Language',
+        duration: '20 minutes',
+        questions: 30,
+        marks: 30,
+        topics: [
+          'Reading Comprehension',
+          'Cloze Test',
+          'Para Jumbles',
+          'Miscellaneous (Fill in the blanks, Multiple Meaning, Paragraph Completion, etc.)'
+        ]
+      },
+      {
+        name: 'Quantitative Aptitude',
+        duration: '20 minutes',
+        questions: 35,
+        marks: 35,
+        topics: [
+          'Simplification/Approximation',
+          'Number Series',
+          'Quadratic Equations',
+          'Data Interpretation (Tabular, Line Graph, Bar Graph, Pie Chart)',
+          'Miscellaneous (Simple Interest, Compound Interest, Partnership, Problems on Ages, Work and Time, Speed Distance and Time, Profit and Loss, Ratio and Proportion, Percentage, etc.)'
+        ]
+      },
+      {
+        name: 'Reasoning Ability',
+        duration: '20 minutes',
+        questions: 35,
+        marks: 35,
+        topics: [
+          'Logical Reasoning',
+          'Alphanumeric Series',
+          'Ranking/Direction/Alphabet Test',
+          'Data Sufficiency',
+          'Coded Inequalities',
+          'Seating Arrangement',
+          'Puzzle',
+          'Tabulation',
+          'Syllogism',
+          'Blood Relations',
+          'Input Output',
+          'Coding Decoding'
+        ]
+      }
+    ],
+    totalDuration: '1 hour',
+    totalQuestions: 100,
+    totalMarks: 100,
+    negativeMarking: '0.25 marks deducted for each wrong answer'
+  },
+  mains: {
+    sections: [
+      {
+        name: 'Reasoning & Computer Aptitude',
+        duration: '60 minutes',
+        questions: 45,
+        marks: 60,
+        topics: [
+          'Logical Reasoning',
+          'Seating Arrangement',
+          'Puzzle',
+          'Tabulation',
+          'Syllogism',
+          'Blood Relations',
+          'Input Output',
+          'Coding Decoding',
+          'Alphanumeric Series',
+          'Ranking/Direction/Alphabet Test',
+          'Data Sufficiency',
+          'Coded Inequalities',
+          'Computer Terminology',
+          'Computer Abbreviations',
+          'Microsoft Office',
+          'Internet Terms',
+          'Computer Hardware',
+          'Computer Software',
+          'Networking',
+          'Computer Security'
+        ]
+      },
+      {
+        name: 'General/Economy/Banking Awareness',
+        duration: '35 minutes',
+        questions: 40,
+        marks: 40,
+        topics: [
+          'Banking Awareness',
+          'Financial Awareness',
+          'Current Affairs (Last 6 months)',
+          'Static General Knowledge',
+          'Economic and Financial News',
+          'RBI Functions and Policies',
+          'Banking Terms',
+          'Important Financial Institutions',
+          'Budget and Economic Survey',
+          'Government Schemes',
+          'Awards and Honours',
+          'Books and Authors',
+          'Sports',
+          'International Affairs'
+        ]
+      },
+      {
+        name: 'English Language',
+        duration: '40 minutes',
+        questions: 35,
+        marks: 40,
+        topics: [
+          'Reading Comprehension',
+          'Cloze Test',
+          'Para Jumbles',
+          'Sentence Improvement',
+          'Error Detection',
+          'Fill in the Blanks',
+          'Vocabulary',
+          'Grammar',
+          'Synonyms and Antonyms',
+          'Idioms and Phrases'
+        ]
+      },
+      {
+        name: 'Quantitative Aptitude',
+        duration: '45 minutes',
+        questions: 35,
+        marks: 50,
+        topics: [
+          'Data Interpretation (High Level)',
+          'Simplification and Approximation',
+          'Number Series',
+          'Arithmetic Problems',
+          'Profit and Loss',
+          'Simple Interest and Compound Interest',
+          'Time and Work',
+          'Time Speed and Distance',
+          'Percentage',
+          'Ratio and Proportion',
+          'Partnership',
+          'Problems on Ages',
+          'Mensuration',
+          'Permutation and Combination',
+          'Probability'
+        ]
+      },
+      {
+        name: 'English Language (Descriptive)',
+        duration: '30 minutes',
+        questions: 2,
+        marks: 25,
+        topics: [
+          'Letter Writing (Formal/Informal)',
+          'Essay Writing',
+          'Précis Writing',
+          'Comprehension'
+        ]
+      }
+    ],
+    totalDuration: '3 hours 30 minutes',
+    totalQuestions: 157,
+    totalMarks: 215,
+    negativeMarking: '0.25 marks deducted for each wrong answer (except descriptive)'
+  }
+};
+
+const preparationTips = [
+  {
+    subject: 'English Language',
+    tips: [
+      'Read newspapers daily, especially editorials',
+      'Practice reading comprehension passages',
+      'Improve vocabulary by learning new words daily',
+      'Focus on grammar rules and common errors',
+      'Practice descriptive writing for mains exam'
+    ]
+  },
+  {
+    subject: 'Quantitative Aptitude',
+    tips: [
+      'Master basic arithmetic operations',
+      'Practice data interpretation regularly',
+      'Learn shortcuts and tricks for quick calculations',
+      'Focus on speed and accuracy',
+      'Solve previous year questions'
+    ]
+  },
+  {
+    subject: 'Reasoning Ability',
+    tips: [
+      'Practice different types of puzzles daily',
+      'Master seating arrangement problems',
+      'Learn pattern recognition techniques',
+      'Practice with time constraints',
+      'Focus on logical thinking'
+    ]
+  },
+  {
+    subject: 'Banking Awareness',
+    tips: [
+      'Stay updated with banking news',
+      'Learn banking terminology',
+      'Study RBI policies and functions',
+      'Focus on current affairs of last 6 months',
+      'Read economic survey and budget highlights'
+    ]
+  }
+];
+---
+
+<Layout 
+  title="IBPS PO Syllabus 2024 - Detailed Prelims & Mains Syllabus | Eduware"
+  description="Complete IBPS PO 2024 syllabus for Prelims and Mains exam. Get detailed topic-wise syllabus, exam pattern, marking scheme and preparation tips."
+  keywords={['IBPS PO syllabus', 'Banking exam syllabus', 'IBPS PO exam pattern', 'PO syllabus 2024']}
+>
+  <div class="container">
+    <!-- Header -->
+    <section class="syllabus-header">
+      <h1>IBPS PO 2024 Syllabus</h1>
+      <p>Complete syllabus and exam pattern for IBPS PO Preliminary and Main Examinations</p>
+      <div class="exam-info">
+        <div class="info-item">
+          <span class="label">Exam Mode</span>
+          <span class="value">Online</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Exam Type</span>
+          <span class="value">Objective + Descriptive</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Negative Marking</span>
+          <span class="value">Yes (0.25)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="syllabus-nav">
+      <a href="#preliminary" class="nav-link">Preliminary Exam</a>
+      <a href="#mains" class="nav-link">Main Exam</a>
+      <a href="#preparation" class="nav-link">Preparation Tips</a>
+      <a href="../ibps-po" class="nav-link">Back to Overview</a>
+    </nav>
+
+    <!-- Preliminary Exam Syllabus -->
+    <section id="preliminary" class="exam-section">
+      <h2>IBPS PO Preliminary Exam Syllabus</h2>
+      
+      <div class="exam-overview">
+        <div class="overview-item">
+          <strong>Total Duration:</strong> {syllabusData.preliminary.totalDuration}
+        </div>
+        <div class="overview-item">
+          <strong>Total Questions:</strong> {syllabusData.preliminary.totalQuestions}
+        </div>
+        <div class="overview-item">
+          <strong>Total Marks:</strong> {syllabusData.preliminary.totalMarks}
+        </div>
+        <div class="overview-item">
+          <strong>Negative Marking:</strong> {syllabusData.preliminary.negativeMarking}
+        </div>
+      </div>
+
+      <div class="sections-grid">
+        {syllabusData.preliminary.sections.map(section => (
+          <div class="section-card">
+            <div class="section-header">
+              <h3>{section.name}</h3>
+              <div class="section-stats">
+                <span>{section.questions} Questions</span>
+                <span>{section.marks} Marks</span>
+                <span>{section.duration}</span>
+              </div>
+            </div>
+            <div class="section-content">
+              <h4>Topics Covered:</h4>
+              <ul class="topics-list">
+                {section.topics.map(topic => (
+                  <li>{topic}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Main Exam Syllabus -->
+    <section id="mains" class="exam-section">
+      <h2>IBPS PO Main Exam Syllabus</h2>
+      
+      <div class="exam-overview">
+        <div class="overview-item">
+          <strong>Total Duration:</strong> {syllabusData.mains.totalDuration}
+        </div>
+        <div class="overview-item">
+          <strong>Total Questions:</strong> {syllabusData.mains.totalQuestions}
+        </div>
+        <div class="overview-item">
+          <strong>Total Marks:</strong> {syllabusData.mains.totalMarks}
+        </div>
+        <div class="overview-item">
+          <strong>Negative Marking:</strong> {syllabusData.mains.negativeMarking}
+        </div>
+      </div>
+
+      <div class="sections-grid">
+        {syllabusData.mains.sections.map(section => (
+          <div class="section-card">
+            <div class="section-header">
+              <h3>{section.name}</h3>
+              <div class="section-stats">
+                <span>{section.questions} Questions</span>
+                <span>{section.marks} Marks</span>
+                <span>{section.duration}</span>
+              </div>
+            </div>
+            <div class="section-content">
+              <h4>Topics Covered:</h4>
+              <ul class="topics-list">
+                {section.topics.map(topic => (
+                  <li>{topic}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Preparation Tips -->
+    <section id="preparation" class="preparation-section">
+      <h2>Subject-wise Preparation Tips</h2>
+      <div class="tips-grid">
+        {preparationTips.map(tip => (
+          <div class="tip-card">
+            <h3>{tip.subject}</h3>
+            <ul class="tips-list">
+              {tip.tips.map(tipItem => (
+                <li>{tipItem}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Study Schedule -->
+    <section class="schedule-section">
+      <h2>Recommended Study Schedule</h2>
+      <div class="schedule-grid">
+        <div class="schedule-card">
+          <h3>📅 3-Month Plan</h3>
+          <div class="schedule-content">
+            <div class="month">
+              <h4>Month 1 - Foundation</h4>
+              <ul>
+                <li>Complete basic concepts of all subjects</li>
+                <li>Practice fundamental problems</li>
+                <li>Build vocabulary and grammar base</li>
+                <li>Start with current affairs compilation</li>
+              </ul>
+            </div>
+            <div class="month">
+              <h4>Month 2 - Practice</h4>
+              <ul>
+                <li>Intensive practice of all topics</li>
+                <li>Start taking sectional tests</li>
+                <li>Focus on speed and accuracy</li>
+                <li>Regular current affairs updates</li>
+              </ul>
+            </div>
+            <div class="month">
+              <h4>Month 3 - Revision</h4>
+              <ul>
+                <li>Full-length mock tests</li>
+                <li>Revision of weak areas</li>
+                <li>Final preparation for descriptive</li>
+                <li>Last minute current affairs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="schedule-card">
+          <h3>📚 Daily Study Plan</h3>
+          <div class="daily-schedule">
+            <div class="time-slot">
+              <strong>Morning (6:00 - 8:00 AM)</strong>
+              <p>Current Affairs & Newspaper Reading</p>
+            </div>
+            <div class="time-slot">
+              <strong>Morning (9:00 - 11:00 AM)</strong>
+              <p>Quantitative Aptitude Practice</p>
+            </div>
+            <div class="time-slot">
+              <strong>Afternoon (2:00 - 4:00 PM)</strong>
+              <p>Reasoning Ability & Computer Aptitude</p>
+            </div>
+            <div class="time-slot">
+              <strong>Evening (6:00 - 8:00 PM)</strong>
+              <p>English Language & Descriptive Writing</p>
+            </div>
+            <div class="time-slot">
+              <strong>Night (9:00 - 10:00 PM)</strong>
+              <p>General Awareness & Banking Knowledge</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Important Books -->
+    <section class="books-section">
+      <h2>Recommended Books</h2>
+      <div class="books-grid">
+        <div class="book-category">
+          <h3>📖 Quantitative Aptitude</h3>
+          <ul>
+            <li>Quantitative Aptitude for Competitive Examinations - R.S. Aggarwal</li>
+            <li>Fast Track Objective Arithmetic - Rajesh Verma</li>
+            <li>Magical Book on Quicker Maths - M. Tyra</li>
+          </ul>
+        </div>
+        
+        <div class="book-category">
+          <h3>🧠 Reasoning Ability</h3>
+          <ul>
+            <li>A Modern Approach to Verbal & Non-Verbal Reasoning - R.S. Aggarwal</li>
+            <li>Analytical Reasoning - M.K. Pandey</li>
+            <li>Reasoning - Arun Sharma</li>
+          </ul>
+        </div>
+        
+        <div class="book-category">
+          <h3>🗣️ English Language</h3>
+          <ul>
+            <li>Word Power Made Easy - Norman Lewis</li>
+            <li>High School English Grammar - Wren & Martin</li>
+            <li>Objective General English - S.P. Bakshi</li>
+          </ul>
+        </div>
+        
+        <div class="book-category">
+          <h3>🏦 Banking Awareness</h3>
+          <ul>
+            <li>Banking Awareness - Arihant Publications</li>
+            <li>Indian Economy - Ramesh Singh</li>
+            <li>Manorama Yearbook (Current Affairs)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Start Your IBPS PO Preparation?</h2>
+        <p>Get access to comprehensive study materials, mock tests, and expert guidance to crack IBPS PO 2024.</p>
+        <div class="cta-buttons">
+          <a href="/questions?category=banking-exams" class="btn-primary">Practice Questions</a>
+          <a href="/blog?category=banking-exams" class="btn-secondary">Read Study Tips</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+      <h2>Quick Links</h2>
+      <div class="links-grid">
+        <a href="../ibps-po" class="link-card">
+          <h3>IBPS PO Overview</h3>
+          <p>Complete exam details and information</p>
+        </a>
+        <a href="../ibps-clerk" class="link-card">
+          <h3>IBPS Clerk</h3>
+          <p>Clerk exam preparation guide</p>
+        </a>
+        <a href="../sbi-po" class="link-card">
+          <h3>SBI PO</h3>
+          <p>State Bank PO exam details</p>
+        </a>
+        <a href="../../" class="link-card">
+          <h3>All Banking Exams</h3>
+          <p>Explore other banking examinations</p>
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Header */
+  .syllabus-header {
+    text-align: center;
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 1rem;
+    color: white;
+    margin-bottom: 2rem;
+  }
+
+  .syllabus-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  .syllabus-header p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .exam-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .info-item {
+    text-align: center;
+  }
+
+  .info-item .label {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+  }
+
+  .info-item .value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  /* Navigation */
+  .syllabus-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    color: #3b82f6;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    background: #3b82f6;
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* Exam Sections */
+  .exam-section {
+    margin-bottom: 4rem;
+  }
+
+  .exam-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+  }
+
+  .exam-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .overview-item {
+    text-align: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .overview-item strong {
+    color: var(--text-primary);
+  }
+
+  /* Sections Grid */
+  .sections-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .section-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .section-header h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .section-stats {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .section-stats span {
+    background: #3b82f6;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .section-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .topics-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .topics-list li {
+    background: #f8fafc;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border-left: 3px solid #3b82f6;
+    font-size: 0.95rem;
+    color: #4b5563;
+  }
+
+  /* Preparation Section */
+  .preparation-section {
+    margin-bottom: 4rem;
+  }
+
+  .preparation-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .tip-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #10b981;
+  }
+
+  .tip-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #059669;
+  }
+
+  .tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tips-list li {
+    background: #ecfdf5;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    color: #065f46;
+    font-size: 0.95rem;
+  }
+
+  .tips-list li:before {
+    content: "✓";
+    color: #10b981;
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+
+  /* Schedule Section */
+  .schedule-section {
+    margin-bottom: 4rem;
+  }
+
+  .schedule-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+  }
+
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+  }
+
+  .schedule-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #8b5cf6;
+  }
+
+  .schedule-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #7c3aed;
+  }
+
+  .month {
+    margin-bottom: 1.5rem;
+  }
+
+  .month h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .month ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .month li {
+    background: #faf5ff;
+    padding: 0.5rem;
+    margin-bottom: 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+    color: #6b46c1;
+  }
+
+  .daily-schedule {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .time-slot {
+    background: #faf5ff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 3px solid #8b5cf6;
+  }
+
+  .time-slot strong {
+    color: #7c3aed;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .time-slot p {
+    margin: 0;
+    color: #6b46c1;
+    font-size: 0.95rem;
+  }
+
+  /* Books Section */
+  .books-section {
+    margin-bottom: 4rem;
+  }
+
+  .books-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+  }
+
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .book-category {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #f59e0b;
+  }
+
+  .book-category h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #d97706;
+  }
+
+  .book-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .book-category li {
+    background: #fffbeb;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    color: #92400e;
+    font-size: 0.95rem;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 3rem;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: white;
+    color: #3b82f6;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-secondary:hover {
+    background: white;
+    color: #3b82f6;
+  }
+
+  /* Quick Links */
+  .quick-links {
+    margin-bottom: 2rem;
+  }
+
+  .quick-links h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .link-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s;
+  }
+
+  .link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .link-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .link-card p {
+    color: #6b7280;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .syllabus-header h1 {
+      font-size: 2rem;
+    }
+
+    .exam-info {
+      gap: 1.5rem;
+    }
+
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .section-stats {
+      gap: 0.5rem;
+    }
+
+    .topics-list {
+      grid-template-columns: 1fr;
+    }
+
+    .schedule-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>

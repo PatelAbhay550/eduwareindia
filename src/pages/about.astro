@@ -1,0 +1,518 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_TITLE, GITHUB_URL, CONTACT_EMAIL } from '../consts';
+---
+
+<Layout 
+	title="About Us - Eduware" 
+	description="Learn about Eduware's mission to make competitive exam preparation accessible and effective for all Indian students."
+	keywords={['about us', 'competitive exams', 'exam preparation', 'mission', 'vision']}
+>
+	<div class="container">
+		<header class="page-header">
+			<h1>About Eduware</h1>
+			<p>Empowering millions of students to achieve their government job dreams</p>
+		</header>
+
+		<div class="about-content">
+			<section class="hero-section">
+				<div class="hero-text">
+					<h2>Your Ultimate Destination for Competitive Exam Success</h2>
+					<p>Eduware is dedicated to democratizing competitive exam preparation across India. We believe that every aspiring candidate deserves access to high-quality study materials, regardless of their economic background or geographical location.</p>
+				</div>
+				<div class="stats-grid">
+					<div class="stat-card">
+						<div class="stat-number">10+</div>
+						<div class="stat-label">Exam Categories</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-number">1000+</div>
+						<div class="stat-label">Practice Questions</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-number">50+</div>
+						<div class="stat-label">Mock Tests</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-number">100%</div>
+						<div class="stat-label">Free Access</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="mission-section">
+				<h2>Our Mission</h2>
+				<div class="mission-grid">
+					<div class="mission-card">
+						<div class="mission-icon">🎯</div>
+						<h3>Accessible Education</h3>
+						<p>Making quality exam preparation materials available to every student, regardless of their financial situation or location.</p>
+					</div>
+					<div class="mission-card">
+						<div class="mission-icon">📚</div>
+						<h3>Comprehensive Coverage</h3>
+						<p>Covering all major competitive exams including SSC, Banking, Railways, UPSC, and State PSCs with updated syllabi.</p>
+					</div>
+					<div class="mission-card">
+						<div class="mission-icon">🏆</div>
+						<h3>Success-Focused</h3>
+						<p>Providing exam-specific strategies, time management techniques, and real exam-like practice environments.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="features-section">
+				<h2>What We Offer</h2>
+				<div class="features-grid">
+					<div class="feature-item">
+						<h3>📝 Mock Tests & Practice Papers</h3>
+						<p>Thousands of questions modeled after real exam patterns with detailed explanations and performance analytics.</p>
+					</div>
+					<div class="feature-item">
+						<h3>📖 Study Materials</h3>
+						<p>Comprehensive notes, formulas, and shortcuts covering all subjects and topics for various competitive exams.</p>
+					</div>
+					<div class="feature-item">
+						<h3>🕒 Current Affairs</h3>
+						<p>Daily current affairs updates, monthly compilations, and quiz series to keep you updated with latest happenings.</p>
+					</div>
+					<div class="feature-item">
+						<h3>🎓 Exam Strategies</h3>
+						<p>Proven techniques for time management, negative marking avoidance, and optimal question selection strategies.</p>
+					</div>
+					<div class="feature-item">
+						<h3>📊 Performance Analysis</h3>
+						<p>Detailed analytics to track your progress, identify weak areas, and focus your preparation efforts effectively.</p>
+					</div>
+					<div class="feature-item">
+						<h3>🌐 Multi-language Support</h3>
+						<p>Content available in Hindi and English to cater to students from different linguistic backgrounds.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="exams-section">
+				<h2>Exams We Cover</h2>
+				<div class="exams-grid">
+					<div class="exam-category">
+						<h3>SSC Exams</h3>
+						<ul>
+							<li>SSC CGL (Combined Graduate Level)</li>
+							<li>SSC CHSL (Combined Higher Secondary Level)</li>
+							<li>SSC MTS (Multi-Tasking Staff)</li>
+							<li>SSC JE (Junior Engineer)</li>
+							<li>SSC CPO (Central Police Organization)</li>
+						</ul>
+					</div>
+					<div class="exam-category">
+						<h3>Banking Exams</h3>
+						<ul>
+							<li>IBPS PO (Probationary Officer)</li>
+							<li>IBPS Clerk</li>
+							<li>SBI PO & Clerk</li>
+							<li>RBI Grade B & Assistant</li>
+							<li>NABARD Grade A & B</li>
+						</ul>
+					</div>
+					<div class="exam-category">
+						<h3>Railway Exams</h3>
+						<ul>
+							<li>RRB NTPC (Non-Technical Popular Categories)</li>
+							<li>RRB Group D</li>
+							<li>RRB JE (Junior Engineer)</li>
+							<li>RRB ALP (Assistant Loco Pilot)</li>
+							<li>RPF (Railway Protection Force)</li>
+						</ul>
+					</div>
+					<div class="exam-category">
+						<h3>Other Important Exams</h3>
+						<ul>
+							<li>UPSC Civil Services</li>
+							<li>State PSC Exams</li>
+							<li>Police Constable & SI</li>
+							<li>Teaching Exams (CTET, TET)</li>
+							<li>Insurance Exams (LIC, NIACL)</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section class="founder-section">
+				<h2>Meet the Founder</h2>
+				<div class="founder-card">
+					<div class="founder-info">
+						<h3>Abhay Patel</h3>
+						<p class="founder-title">Founder & Developer</p>
+						<p>Passionate about education technology and helping students achieve their career goals. With a background in software development and a deep understanding of the Indian education system, Abhay created Eduware to bridge the gap between quality education and accessibility.</p>
+						<div class="founder-links">
+							<a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" class="founder-link">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M9 19c-5 0-9-4-9-9s4-9 9-9 9 4 9 9-4 9-9 9z"></path>
+									<path d="M3.6 7h4.8m0 0V3h4m-4 4 4-4"></path>
+								</svg>
+								GitHub Profile
+							</a>
+							<a href={`mailto:${CONTACT_EMAIL}`} class="founder-link">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+									<polyline points="22,6 12,13 2,6"></polyline>
+								</svg>
+								Contact
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="values-section">
+				<h2>Our Core Values</h2>
+				<div class="values-grid">
+					<div class="value-item">
+						<h3>🤝 Integrity</h3>
+						<p>We provide accurate, up-to-date information and maintain transparency in everything we do.</p>
+					</div>
+					<div class="value-item">
+						<h3>🎯 Excellence</h3>
+						<p>We strive for the highest quality in our content, user experience, and student outcomes.</p>
+					</div>
+					<div class="value-item">
+						<h3>🌟 Innovation</h3>
+						<p>We continuously improve our platform with new features and learning methodologies.</p>
+					</div>
+					<div class="value-item">
+						<h3>💪 Empowerment</h3>
+						<p>We believe in empowering students with knowledge, confidence, and the tools for success.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="cta-section">
+				<h2>Join the Eduware Community</h2>
+				<p>Start your journey towards government job success today. Access thousands of practice questions, mock tests, and study materials - all completely free!</p>
+				<div class="cta-buttons">
+					<a href="/questions" class="btn btn-primary">Practice Questions</a>
+					<a href="/blog" class="btn btn-secondary">Study Materials</a>
+					<a href="/contact" class="btn btn-outline">Get Support</a>
+				</div>
+			</section>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.page-header {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+	
+	.page-header h1 {
+		font-size: var(--font-size-4xl);
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.page-header p {
+		font-size: var(--font-size-lg);
+		color: var(--text-secondary);
+	}
+	
+	.about-content {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+	
+	.hero-section {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+	
+	.hero-text h2 {
+		font-size: var(--font-size-3xl);
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.hero-text p {
+		font-size: var(--font-size-lg);
+		color: var(--text-secondary);
+		line-height: 1.7;
+		margin-bottom: 2rem;
+	}
+	
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+		gap: 1.5rem;
+		margin-top: 2rem;
+	}
+	
+	.stat-card {
+		background: var(--bg-secondary);
+		padding: 2rem 1rem;
+		border-radius: var(--radius-lg);
+		text-align: center;
+		border: 1px solid var(--border-light);
+	}
+	
+	.stat-number {
+		display: block;
+		font-size: var(--font-size-3xl);
+		font-weight: 700;
+		color: var(--primary);
+		margin-bottom: 0.5rem;
+	}
+	
+	.stat-label {
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+		font-weight: 500;
+	}
+	
+	.mission-section,
+	.features-section,
+	.exams-section,
+	.founder-section,
+	.values-section {
+		margin-bottom: 4rem;
+	}
+	
+	.mission-section h2,
+	.features-section h2,
+	.exams-section h2,
+	.founder-section h2,
+	.values-section h2 {
+		text-align: center;
+		font-size: var(--font-size-3xl);
+		margin-bottom: 2rem;
+		color: var(--text-primary);
+	}
+	
+	.mission-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	
+	.mission-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		text-align: center;
+		box-shadow: var(--shadow-sm);
+		transition: transform 0.2s ease;
+	}
+	
+	.mission-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+	}
+	
+	.mission-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.mission-card h3 {
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.mission-card p {
+		color: var(--text-secondary);
+		line-height: 1.6;
+	}
+	
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+	
+	.feature-item {
+		background: var(--bg-secondary);
+		padding: 1.5rem;
+		border-radius: var(--radius);
+		border-left: 4px solid var(--primary);
+	}
+	
+	.feature-item h3 {
+		margin-bottom: 0.5rem;
+		color: var(--text-primary);
+		font-size: var(--font-size-lg);
+	}
+	
+	.feature-item p {
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin: 0;
+	}
+	
+	.exams-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+	}
+	
+	.exam-category {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius);
+		padding: 1.5rem;
+	}
+	
+	.exam-category h3 {
+		margin-bottom: 1rem;
+		color: var(--primary);
+		font-size: var(--font-size-lg);
+		border-bottom: 2px solid var(--primary-light);
+		padding-bottom: 0.5rem;
+	}
+	
+	.exam-category ul {
+		list-style: none;
+		padding: 0;
+	}
+	
+	.exam-category li {
+		padding: 0.5rem 0;
+		color: var(--text-secondary);
+		border-bottom: 1px solid var(--border-light);
+		position: relative;
+		padding-left: 1rem;
+	}
+	
+	.exam-category li:before {
+		content: "•";
+		color: var(--primary);
+		font-weight: bold;
+		position: absolute;
+		left: 0;
+	}
+	
+	.exam-category li:last-child {
+		border-bottom: none;
+	}
+	
+	.founder-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		text-align: center;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.founder-info h3 {
+		font-size: var(--font-size-2xl);
+		margin-bottom: 0.5rem;
+		color: var(--text-primary);
+	}
+	
+	.founder-title {
+		color: var(--primary);
+		font-weight: 600;
+		margin-bottom: 1rem;
+	}
+	
+	.founder-info p {
+		color: var(--text-secondary);
+		line-height: 1.7;
+		margin-bottom: 2rem;
+	}
+	
+	.founder-links {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+	
+	.founder-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--primary);
+		text-decoration: none;
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--primary);
+		border-radius: var(--radius);
+		transition: all 0.2s ease;
+	}
+	
+	.founder-link:hover {
+		background: var(--primary);
+		color: white;
+	}
+	
+	.values-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+	}
+	
+	.value-item {
+		text-align: center;
+		padding: 1.5rem;
+	}
+	
+	.value-item h3 {
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+		font-size: var(--font-size-lg);
+	}
+	
+	.value-item p {
+		color: var(--text-secondary);
+		line-height: 1.6;
+	}
+	
+	.cta-section {
+		background: var(--primary-light);
+		padding: 3rem 2rem;
+		border-radius: var(--radius-lg);
+		text-align: center;
+		margin-top: 4rem;
+	}
+	
+	.cta-section h2 {
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.cta-section p {
+		margin-bottom: 2rem;
+		color: var(--text-secondary);
+		font-size: var(--font-size-lg);
+	}
+	
+	.cta-buttons {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+	
+	@media (max-width: 768px) {
+		.stats-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		
+		.mission-grid,
+		.features-grid,
+		.exams-grid,
+		.values-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.founder-links {
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		.cta-buttons {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+</style>

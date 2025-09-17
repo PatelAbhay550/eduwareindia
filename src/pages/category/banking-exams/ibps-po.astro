@@ -1,0 +1,900 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../../components/FormattedDate.astro';
+
+// Get IBPS PO related content
+const allBlogPosts = await getCollection('blog');
+const ibpsPoPosts = allBlogPosts
+  .filter(post => post.data.category === 'Banking Exams' && 
+    (post.data.title.toLowerCase().includes('ibps') || post.data.title.toLowerCase().includes('po')))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// IBPS PO exam details
+const examDetails = {
+  name: 'IBPS PO 2024',
+  fullName: 'Institute of Banking Personnel Selection - Probationary Officer',
+  overview: 'IBPS PO is conducted to recruit Probationary Officers in various public sector banks across India.',
+  vacancies: '4000+',
+  salary: '₹23,700 - ₹42,020',
+  examMode: 'Online',
+  phases: ['Prelims', 'Mains', 'Interview'],
+  eligibility: {
+    age: '20-30 years',
+    qualification: 'Graduation in any discipline',
+    nationality: 'Indian citizen'
+  },
+  importantDates: {
+    notification: 'August 2024',
+    applicationStart: 'August 2024',
+    applicationEnd: 'September 2024',
+    prelimsExam: 'October 2024',
+    mainsExam: 'November 2024',
+    interview: 'January 2025'
+  }
+};
+
+// Active tab management
+const activeTab = Astro.url.searchParams.get('tab') || 'overview';
+---
+
+<Layout 
+  title="IBPS PO 2024 - Notification, Syllabus, Exam Date, Eligibility | Eduware"
+  description="Complete guide for IBPS PO 2024 exam. Get latest notification, syllabus, exam pattern, eligibility criteria, salary details and preparation tips."
+  keywords={['IBPS PO', 'Banking exam', 'Probationary Officer', 'IBPS notification', 'Bank PO exam']}
+>
+  <div class="container">
+    <!-- Header Section -->
+    <section class="exam-header">
+      <div class="exam-title">
+        <h1>{examDetails.name}</h1>
+        <p>{examDetails.fullName}</p>
+      </div>
+      <div class="exam-quick-info">
+        <div class="info-item">
+          <span class="label">Vacancies</span>
+          <span class="value">{examDetails.vacancies}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Salary</span>
+          <span class="value">{examDetails.salary}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Mode</span>
+          <span class="value">{examDetails.examMode}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="tab-navigation">
+      <a href="?tab=overview" class={activeTab === 'overview' ? 'tab-link active' : 'tab-link'}>
+        Overview
+      </a>
+      <a href="?tab=eligibility" class={activeTab === 'eligibility' ? 'tab-link active' : 'tab-link'}>
+        Eligibility
+      </a>
+      <a href="?tab=dates" class={activeTab === 'dates' ? 'tab-link active' : 'tab-link'}>
+        Important Dates
+      </a>
+      <a href="./syllabus" class="tab-link">
+        Syllabus
+      </a>
+      <a href="?tab=preparation" class={activeTab === 'preparation' ? 'tab-link active' : 'tab-link'}>
+        Preparation
+      </a>
+    </nav>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+      {activeTab === 'overview' && (
+        <section class="content-section">
+          <h2>IBPS PO 2024 Overview</h2>
+          <div class="overview-grid">
+            <div class="overview-main">
+              <p>{examDetails.overview}</p>
+              
+              <h3>Exam Pattern</h3>
+              <div class="exam-phases">
+                {examDetails.phases.map(phase => (
+                  <div class="phase-card">
+                    <h4>{phase}</h4>
+                    <p>
+                      {phase === 'Prelims' && 'Online objective test with 3 sections: English Language, Quantitative Aptitude, and Reasoning Ability.'}
+                      {phase === 'Mains' && 'Online objective + descriptive test with 5 sections including General/Economy/Banking Awareness.'}
+                      {phase === 'Interview' && 'Personal interview round for final selection of candidates.'}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <h3>Selection Process</h3>
+              <ol class="selection-process">
+                <li><strong>Preliminary Examination:</strong> Qualifying nature, scores not counted for final merit</li>
+                <li><strong>Main Examination:</strong> Marks counted for final merit list</li>
+                <li><strong>Interview:</strong> Final round with weightage in final selection</li>
+              </ol>
+            </div>
+            
+            <div class="overview-sidebar">
+              <div class="quick-stats">
+                <h3>Quick Facts</h3>
+                <div class="stat-item">
+                  <span class="stat-label">Conducting Body</span>
+                  <span class="stat-value">IBPS</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Exam Level</span>
+                  <span class="stat-value">National</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Exam Type</span>
+                  <span class="stat-value">Online</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Negative Marking</span>
+                  <span class="stat-value">Yes (0.25)</span>
+                </div>
+              </div>
+              
+              <div class="notification-alert">
+                <h4>🔔 Latest Update</h4>
+                <p>IBPS PO 2024 notification has been released. Application process is ongoing.</p>
+                <a href="#" class="alert-link">Apply Now</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {activeTab === 'eligibility' && (
+        <section class="content-section">
+          <h2>IBPS PO 2024 Eligibility Criteria</h2>
+          <div class="eligibility-grid">
+            <div class="eligibility-card">
+              <h3>Age Limit</h3>
+              <p><strong>Minimum Age:</strong> 20 years</p>
+              <p><strong>Maximum Age:</strong> 30 years</p>
+              <p><strong>Age Relaxation:</strong> As per government norms for reserved categories</p>
+            </div>
+            
+            <div class="eligibility-card">
+              <h3>Educational Qualification</h3>
+              <p><strong>Required:</strong> Graduation in any discipline from a recognized university</p>
+              <p><strong>Minimum Marks:</strong> No specific percentage required</p>
+              <p><strong>Note:</strong> Final year students can also apply</p>
+            </div>
+            
+            <div class="eligibility-card">
+              <h3>Nationality</h3>
+              <p><strong>Citizenship:</strong> Indian citizen</p>
+              <p><strong>Documents:</strong> Valid citizenship proof required</p>
+            </div>
+            
+            <div class="eligibility-card">
+              <h3>Computer Literacy</h3>
+              <p><strong>Requirement:</strong> Operating and working knowledge of computer systems</p>
+              <p><strong>Certificate:</strong> Computer literacy certificate may be required</p>
+            </div>
+          </div>
+          
+          <div class="eligibility-note">
+            <h3>Important Notes</h3>
+            <ul>
+              <li>Candidates must be proficient in the official language of the state/UT</li>
+              <li>Knowledge of local language is desirable for better customer service</li>
+              <li>All eligibility criteria must be fulfilled as on the cut-off date</li>
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {activeTab === 'dates' && (
+        <section class="content-section">
+          <h2>IBPS PO 2024 Important Dates</h2>
+          <div class="dates-timeline">
+            <div class="timeline-item completed">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Notification Release</h3>
+                <p class="date">{examDetails.importantDates.notification}</p>
+                <p>Official notification with complete details published</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item active">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Application Period</h3>
+                <p class="date">{examDetails.importantDates.applicationStart} - {examDetails.importantDates.applicationEnd}</p>
+                <p>Online application and fee payment window</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item upcoming">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Preliminary Exam</h3>
+                <p class="date">{examDetails.importantDates.prelimsExam}</p>
+                <p>Online preliminary examination</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item upcoming">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Main Exam</h3>
+                <p class="date">{examDetails.importantDates.mainsExam}</p>
+                <p>Online main examination</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item upcoming">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Interview</h3>
+                <p class="date">{examDetails.importantDates.interview}</p>
+                <p>Personal interview for qualified candidates</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {activeTab === 'preparation' && (
+        <section class="content-section">
+          <h2>IBPS PO 2024 Preparation Strategy</h2>
+          <div class="preparation-grid">
+            <div class="strategy-card">
+              <h3>📚 Study Plan</h3>
+              <ul>
+                <li>Create a 3-4 month comprehensive study schedule</li>
+                <li>Allocate time for each subject based on your strengths</li>
+                <li>Include daily practice sessions and weekly mock tests</li>
+                <li>Reserve last month for intensive revision</li>
+              </ul>
+            </div>
+            
+            <div class="strategy-card">
+              <h3>🧮 Quantitative Aptitude</h3>
+              <ul>
+                <li>Focus on basic arithmetic and algebra</li>
+                <li>Practice data interpretation extensively</li>
+                <li>Master simplification and approximation</li>
+                <li>Work on speed and accuracy</li>
+              </ul>
+            </div>
+            
+            <div class="strategy-card">
+              <h3>🧠 Reasoning Ability</h3>
+              <ul>
+                <li>Strengthen logical reasoning concepts</li>
+                <li>Practice puzzles and seating arrangements</li>
+                <li>Focus on syllogism and coding-decoding</li>
+                <li>Solve previous year questions</li>
+              </ul>
+            </div>
+            
+            <div class="strategy-card">
+              <h3>🗣️ English Language</h3>
+              <ul>
+                <li>Improve vocabulary and grammar</li>
+                <li>Practice reading comprehension daily</li>
+                <li>Focus on error detection and sentence improvement</li>
+                <li>Read newspapers and editorials regularly</li>
+              </ul>
+            </div>
+            
+            <div class="strategy-card">
+              <h3>🏦 Banking Awareness</h3>
+              <ul>
+                <li>Study banking terms and concepts</li>
+                <li>Keep updated with current banking news</li>
+                <li>Learn about RBI policies and guidelines</li>
+                <li>Focus on banking history and important personalities</li>
+              </ul>
+            </div>
+            
+            <div class="strategy-card">
+              <h3>📰 General Awareness</h3>
+              <ul>
+                <li>Read current affairs from last 6 months</li>
+                <li>Focus on economic survey and budget</li>
+                <li>Study important government schemes</li>
+                <li>Keep track of appointments and awards</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="tips-section">
+            <h3>💡 Expert Tips</h3>
+            <div class="tips-grid">
+              <div class="tip-card">
+                <h4>Time Management</h4>
+                <p>Practice with timer to improve speed. Allocate fixed time for each section during practice.</p>
+              </div>
+              <div class="tip-card">
+                <h4>Mock Tests</h4>
+                <p>Take at least 2-3 mock tests weekly. Analyze your performance and work on weak areas.</p>
+              </div>
+              <div class="tip-card">
+                <h4>Revision Strategy</h4>
+                <p>Create short notes for quick revision. Review important formulas and concepts daily.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+    </div>
+
+    <!-- Related Articles -->
+    {ibpsPoPosts.length > 0 && (
+      <section class="related-articles">
+        <h2>Related Articles</h2>
+        <div class="articles-grid">
+          {ibpsPoPosts.slice(0, 3).map(post => (
+            <article class="article-card">
+              <h3>
+                <a href={`/blog/${post.data.slug || post.id}/`}>{post.data.title}</a>
+              </h3>
+              <p>{post.data.description}</p>
+              <div class="article-meta">
+                <FormattedDate date={post.data.pubDate} />
+                <span>•</span>
+                <span>{post.data.readingTime} min read</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Start Your IBPS PO Preparation Today</h2>
+        <p>Join thousands of successful candidates who cracked IBPS PO with our comprehensive preparation materials.</p>
+        <div class="cta-buttons">
+          <a href="/category/banking-exams/ibps-po/syllabus" class="btn-primary">View Syllabus</a>
+          <a href="/questions?category=banking-exams" class="btn-secondary">Practice Questions</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Header Section */
+  .exam-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    color: white;
+    margin-bottom: 2rem;
+  }
+
+  .exam-title h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .exam-title p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .exam-quick-info {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .info-item {
+    text-align: center;
+  }
+
+  .info-item .label {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+  }
+
+  .info-item .value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  /* Tab Navigation */
+  .tab-navigation {
+    display: flex;
+    background: white;
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    gap: 0.25rem;
+  }
+
+  .tab-link {
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    color: #6b7280;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .tab-link:hover {
+    background: #f3f4f6;
+    color: #374151;
+  }
+
+  .tab-link.active {
+    background: #3b82f6;
+    color: white;
+  }
+
+  /* Content Sections */
+  .content-section {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .content-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .content-section h3 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem 0;
+    color: var(--text-primary);
+  }
+
+  /* Overview Section */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+  }
+
+  .exam-phases {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .phase-card {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border-left: 4px solid #3b82f6;
+  }
+
+  .phase-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .selection-process {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .selection-process li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .quick-stats {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .quick-stats h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .stat-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .stat-label {
+    color: #6b7280;
+  }
+
+  .stat-value {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .notification-alert {
+    background: #dbeafe;
+    border: 1px solid #3b82f6;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  .notification-alert h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #1e40af;
+  }
+
+  .notification-alert p {
+    margin-bottom: 1rem;
+    color: #1e40af;
+  }
+
+  .alert-link {
+    background: #3b82f6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  /* Eligibility Section */
+  .eligibility-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .eligibility-card {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border-left: 4px solid #10b981;
+  }
+
+  .eligibility-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #059669;
+  }
+
+  .eligibility-note {
+    background: #fef3c7;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border-left: 4px solid #f59e0b;
+  }
+
+  .eligibility-note h3 {
+    margin-top: 0;
+    color: #d97706;
+  }
+
+  .eligibility-note ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .eligibility-note li {
+    margin-bottom: 0.5rem;
+    color: #92400e;
+  }
+
+  /* Timeline Section */
+  .dates-timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .dates-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e5e7eb;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: -2rem;
+    top: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 3px solid #e5e7eb;
+    background: white;
+  }
+
+  .timeline-item.completed .timeline-marker {
+    background: #10b981;
+    border-color: #10b981;
+  }
+
+  .timeline-item.active .timeline-marker {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    animation: pulse 2s infinite;
+  }
+
+  .timeline-item.upcoming .timeline-marker {
+    background: #f59e0b;
+    border-color: #f59e0b;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .timeline-content h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .timeline-content .date {
+    font-weight: 600;
+    color: #3b82f6;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-content p {
+    color: #6b7280;
+    margin: 0;
+  }
+
+  /* Preparation Section */
+  .preparation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .strategy-card {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border-left: 4px solid #8b5cf6;
+  }
+
+  .strategy-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #7c3aed;
+  }
+
+  .strategy-card ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .strategy-card li {
+    margin-bottom: 0.5rem;
+    color: #4b5563;
+    line-height: 1.5;
+  }
+
+  .tips-section {
+    background: #ecfdf5;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    border-left: 4px solid #10b981;
+  }
+
+  .tips-section h3 {
+    margin-top: 0;
+    color: #059669;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .tip-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .tip-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .tip-card p {
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+
+  /* Related Articles */
+  .related-articles {
+    margin-bottom: 2rem;
+  }
+
+  .related-articles h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--text-primary);
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .article-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+  }
+
+  .article-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .article-card h3 a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .article-card h3 a:hover {
+    color: #3b82f6;
+  }
+
+  .article-card p {
+    color: #6b7280;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: white;
+    color: #3b82f6;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-secondary:hover {
+    background: white;
+    color: #3b82f6;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .exam-title h1 {
+      font-size: 2rem;
+    }
+
+    .exam-quick-info {
+      gap: 1.5rem;
+    }
+
+    .overview-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tab-navigation {
+      padding: 0.25rem;
+    }
+
+    .tab-link {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .cta-content h2 {
+      font-size: 2rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>

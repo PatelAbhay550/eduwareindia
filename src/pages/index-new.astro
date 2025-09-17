@@ -1,0 +1,499 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_TITLE, SITE_DESCRIPTION, CATEGORIES } from '../consts';
+
+// Get featured blog posts
+const allBlogPosts = await getCollection('blog');
+const featuredPosts = allBlogPosts
+	.filter(post => post.data.featured)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
+
+const recentPosts = allBlogPosts
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 4);
+
+// Get practice questions
+const allQuestions = await getCollection('questions');
+const recentQuestions = allQuestions
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 4);
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<div class="container">
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="hero-content">
+				<h1 class="hero-title">Master Competitive Exams with Eduware</h1>
+				<p class="hero-description">
+					Your ultimate destination for SSC, Banking, Railway, UPSC and other government exam preparation. 
+					Free mock tests, study materials, and practice questions to boost your success.
+				</p>
+				<div class="hero-stats">
+					<div class="stat">
+						<div class="stat-number">1000+</div>
+						<div class="stat-label">Practice Questions</div>
+					</div>
+					<div class="stat">
+						<div class="stat-number">50+</div>
+						<div class="stat-label">Mock Tests</div>
+					</div>
+					<div class="stat">
+						<div class="stat-number">10+</div>
+						<div class="stat-label">Exam Categories</div>
+					</div>
+				</div>
+				<div class="hero-actions">
+					<a href="/questions" class="btn btn-primary">
+						Start Practice
+					</a>
+					<a href="/blog" class="btn btn-secondary">
+						Study Materials
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Exam Categories -->
+		<section class="section">
+			<h2 class="section-title">Popular Exam Categories</h2>
+			<div class="categories-grid">
+				{CATEGORIES.slice(0, 6).map((category) => (
+					<a href={`/category/${category.toLowerCase().replace(/\s+/g, '-')}`} class="category-card">
+						<div class="category-icon">
+							{category === 'SSC Exams' && '📚'}
+							{category === 'Banking Exams' && '🏦'}
+							{category === 'Railway Exams' && '🚂'}
+							{category === 'UPSC Exams' && '🏛️'}
+							{category === 'State PSC' && '🏛️'}
+							{category === 'Police Exams' && '👮'}
+							{category === 'Insurance Exams' && '🛡️'}
+							{category === 'Teaching Exams' && '👨‍🏫'}
+						</div>
+						<h3>{category}</h3>
+						<p>Practice questions and study materials</p>
+					</a>
+				))}
+			</div>
+		</section>
+
+		<!-- Featured Study Materials -->
+		{featuredPosts.length > 0 && (
+			<section class="section">
+				<div class="section-header">
+					<h2 class="section-title">Featured Study Materials</h2>
+					<a href="/blog" class="btn btn-outline">View All Materials</a>
+				</div>
+				<div class="featured-grid">
+					{featuredPosts.map((post) => (
+						<article class="featured-card">
+							<div class="card-content">
+								{post.data.category && (
+									<span class="category-badge">{post.data.category}</span>
+								)}
+								<h3 class="card-title">
+									<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+								</h3>
+								<p class="card-description">{post.data.description}</p>
+								<div class="card-meta">
+									<FormattedDate date={post.data.pubDate} />
+									{post.data.readingTime && (
+										<span class="reading-time">{post.data.readingTime} min read</span>
+									)}
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+		)}
+
+		<!-- Recent Practice Questions -->
+		{recentQuestions.length > 0 && (
+			<section class="section">
+				<div class="section-header">
+					<h2 class="section-title">Latest Practice Questions</h2>
+					<a href="/questions" class="btn btn-outline">View All Questions</a>
+				</div>
+				<div class="questions-grid">
+					{recentQuestions.map((question) => (
+						<article class="question-card">
+							<div class="question-header">
+								{question.data.difficulty && (
+									<span class={`difficulty-badge difficulty-${question.data.difficulty.toLowerCase()}`}>
+										{question.data.difficulty}
+									</span>
+								)}
+								{question.data.category && (
+									<span class="category-badge">{question.data.category}</span>
+								)}
+							</div>
+							<h3 class="question-title">
+								<a href={`/questions/${question.slug}/`}>{question.data.title}</a>
+							</h3>
+							<p class="question-description">{question.data.description}</p>
+							<div class="question-meta">
+								<FormattedDate date={question.data.pubDate} />
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+		)}
+
+		<!-- Recent Blog Posts -->
+		{recentPosts.length > 0 && (
+			<section class="section">
+				<div class="section-header">
+					<h2 class="section-title">Latest Updates</h2>
+					<a href="/blog" class="btn btn-outline">View All Posts</a>
+				</div>
+				<div class="posts-grid">
+					{recentPosts.map((post) => (
+						<article class="post-card">
+							<div class="card-content">
+								{post.data.category && (
+									<span class="category-badge">{post.data.category}</span>
+								)}
+								<h3 class="card-title">
+									<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+								</h3>
+								<p class="card-description">{post.data.description}</p>
+								<div class="card-meta">
+									<FormattedDate date={post.data.pubDate} />
+									{post.data.readingTime && (
+										<span class="reading-time">{post.data.readingTime} min read</span>
+									)}
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+		)}
+
+		<!-- Call to Action -->
+		<section class="cta-section">
+			<div class="cta-content">
+				<h2>Ready to Start Your Success Journey?</h2>
+				<p>Join thousands of students who are preparing for government exams with Eduware. Access free mock tests, study materials, and practice questions.</p>
+				<div class="cta-actions">
+					<a href="/questions" class="btn btn-primary">Start Practice Now</a>
+					<a href="/contact" class="btn btn-outline">Get Support</a>
+				</div>
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style>
+	.hero {
+		text-align: center;
+		padding: 4rem 0;
+		background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg-secondary) 100%);
+		border-radius: var(--radius-lg);
+		margin-bottom: 4rem;
+	}
+	
+	.hero-title {
+		font-size: var(--font-size-4xl);
+		margin-bottom: 1.5rem;
+		color: var(--text-primary);
+		line-height: 1.2;
+	}
+	
+	.hero-description {
+		font-size: var(--font-size-lg);
+		color: var(--text-secondary);
+		margin-bottom: 2rem;
+		max-width: 700px;
+		margin-left: auto;
+		margin-right: auto;
+		line-height: 1.6;
+	}
+	
+	.hero-stats {
+		display: flex;
+		justify-content: center;
+		gap: 3rem;
+		margin-bottom: 2rem;
+		flex-wrap: wrap;
+	}
+	
+	.stat {
+		text-align: center;
+	}
+	
+	.stat-number {
+		display: block;
+		font-size: var(--font-size-3xl);
+		font-weight: 700;
+		color: var(--primary);
+		margin-bottom: 0.5rem;
+	}
+	
+	.stat-label {
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+		font-weight: 500;
+	}
+	
+	.hero-actions {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
+	.section {
+		margin-bottom: 4rem;
+	}
+	
+	.section-title {
+		font-size: var(--font-size-3xl);
+		margin-bottom: 2rem;
+		color: var(--text-primary);
+		text-align: center;
+	}
+	
+	.section-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 2rem;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	
+	.section-header .section-title {
+		margin-bottom: 0;
+		text-align: left;
+	}
+	
+	.categories-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 1.5rem;
+	}
+	
+	.category-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		text-align: center;
+		text-decoration: none;
+		color: inherit;
+		transition: all 0.2s ease;
+		display: block;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.category-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+		border-color: var(--primary);
+	}
+	
+	.category-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.category-card h3 {
+		margin-bottom: 0.5rem;
+		color: var(--text-primary);
+		font-size: var(--font-size-lg);
+	}
+	
+	.category-card p {
+		color: var(--text-secondary);
+		font-size: var(--font-size-sm);
+		margin: 0;
+	}
+	
+	.featured-grid,
+	.questions-grid,
+	.posts-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	
+	.featured-card,
+	.question-card,
+	.post-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 1.5rem;
+		transition: all 0.2s ease;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.featured-card:hover,
+	.question-card:hover,
+	.post-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+	}
+	
+	.question-header {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+		flex-wrap: wrap;
+	}
+	
+	.category-badge {
+		background: var(--primary-light);
+		color: var(--primary-dark);
+		padding: 0.25rem 0.75rem;
+		border-radius: var(--radius-lg);
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	
+	.difficulty-badge {
+		padding: 0.25rem 0.75rem;
+		border-radius: var(--radius-lg);
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	
+	.difficulty-easy {
+		background: #dcfce7;
+		color: #166534;
+	}
+	
+	.difficulty-medium {
+		background: #fef3c7;
+		color: #92400e;
+	}
+	
+	.difficulty-hard {
+		background: #fee2e2;
+		color: #991b1b;
+	}
+	
+	.card-title a,
+	.question-title a {
+		color: var(--text-primary);
+		text-decoration: none;
+		font-size: var(--font-size-lg);
+		font-weight: 600;
+	}
+	
+	.card-title a:hover,
+	.question-title a:hover {
+		color: var(--primary);
+	}
+	
+	.card-description,
+	.question-description {
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin: 0.5rem 0 1rem 0;
+	}
+	
+	.card-meta,
+	.question-meta {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+	}
+	
+	.reading-time {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	
+	.cta-section {
+		background: var(--primary);
+		color: white;
+		padding: 4rem 0;
+		border-radius: var(--radius-lg);
+		text-align: center;
+		margin-top: 4rem;
+	}
+	
+	.cta-content h2 {
+		font-size: var(--font-size-3xl);
+		margin-bottom: 1rem;
+	}
+	
+	.cta-content p {
+		font-size: var(--font-size-lg);
+		margin-bottom: 2rem;
+		opacity: 0.9;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.cta-actions {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
+	.cta-actions .btn {
+		min-width: 200px;
+	}
+	
+	.cta-actions .btn-outline {
+		background: transparent;
+		border-color: white;
+		color: white;
+	}
+	
+	.cta-actions .btn-outline:hover {
+		background: white;
+		color: var(--primary);
+	}
+	
+	@media (max-width: 768px) {
+		.hero-title {
+			font-size: var(--font-size-3xl);
+		}
+		
+		.hero-stats {
+			gap: 2rem;
+		}
+		
+		.categories-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.featured-grid,
+		.questions-grid,
+		.posts-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.section-header {
+			flex-direction: column;
+			align-items: stretch;
+		}
+		
+		.section-header .section-title {
+			text-align: center;
+		}
+		
+		.cta-actions {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+</style>

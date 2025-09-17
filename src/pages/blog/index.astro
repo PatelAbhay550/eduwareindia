@@ -1,0 +1,361 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { CATEGORIES } from '../../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+// Get featured post (first one or one marked as featured)
+const featuredPost = posts.find(post => post.data.featured) || posts[0];
+const otherPosts = posts.filter(post => post !== featuredPost);
+
+// Get categories that have posts
+const usedCategories = [...new Set(posts.map(post => post.data.category).filter(Boolean))];
+---
+
+<Layout 
+	title="Blog - Eduware" 
+	description="Explore our latest articles on Competitive Exams like SSC, RRB, Banking, and Defence."
+	keywords={['blog', 'competitive exams', 'study materials', 'test preparation']}
+>
+	<div class="container">
+		<header class="page-header">
+			<h1>Blog</h1>
+			<p>Explore our latest articles on Competitive Exams </p>
+		</header>
+
+		<!-- Category Filter -->
+		{usedCategories.length > 0 && (
+			<div class="category-filter">
+				<button class="filter-btn active" data-category="all">All Articles</button>
+				{usedCategories.map(category => (
+					<button class="filter-btn" data-category={category}>
+						{category}
+					</button>
+				))}
+			</div>
+		)}
+
+		<!-- Featured Post -->
+		{featuredPost && (
+			<section class="featured-section">
+				<h2 class="section-title">Featured Article</h2>
+				<article class="featured-post">
+					{featuredPost.data.heroImage && (
+						<a href={`/blog/${featuredPost.data.slug || featuredPost.id}/`} class="featured-image">
+							<img 
+								src={featuredPost.data.heroImage.src} 
+								alt={featuredPost.data.title}
+							/>
+						</a>
+					)}
+					<div class="featured-content">
+						{featuredPost.data.category && (
+							<span class="tag featured-tag">{featuredPost.data.category}</span>
+						)}
+						<h3 class="featured-title">
+							<a href={`/blog/${featuredPost.data.slug || featuredPost.id}/`}>{featuredPost.data.title}</a>
+						</h3>
+						<p class="featured-description">{featuredPost.data.description}</p>
+						<div class="featured-meta">
+							<FormattedDate date={featuredPost.data.pubDate} />
+							{featuredPost.data.readingTime && (
+								<span>{featuredPost.data.readingTime} min read</span>
+							)}
+						</div>
+					</div>
+				</article>
+			</section>
+		)}
+
+		<!-- All Posts -->
+		<section class="posts-section">
+			<h2 class="section-title">All Articles</h2>
+			<div class="posts-grid">
+				{otherPosts.map((post) => (
+					<article class="post-card" data-category={post.data.category || 'uncategorized'}>
+						{post.data.heroImage && (
+							<a href={`/blog/${post.data.slug || post.id}/`} class="post-image-link">
+								<img 
+									src={post.data.heroImage.src} 
+									alt={post.data.title}
+									class="post-image"
+								/>
+							</a>
+						)}
+						<div class="post-content">
+							<div class="post-meta">
+								{post.data.category && (
+									<span class="tag">{post.data.category}</span>
+								)}
+								<FormattedDate date={post.data.pubDate} />
+							</div>
+							<h3 class="post-title">
+								<a href={`/blog/${post.data.slug || post.id}/`}>{post.data.title}</a>
+							</h3>
+							<p class="post-description">{post.data.description}</p>
+							{post.data.tags && post.data.tags.length > 0 && (
+								<div class="post-tags">
+									{post.data.tags.slice(0, 3).map((tag) => (
+										<span class="tag-small">{tag}</span>
+									))}
+								</div>
+							)}
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style>
+	.page-header {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+	
+	.page-header h1 {
+		font-size: var(--font-size-4xl);
+		margin-bottom: 1rem;
+	}
+	
+	.page-header p {
+		font-size: var(--font-size-lg);
+		color: var(--text-secondary);
+	}
+	
+	.category-filter {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 3rem;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	
+	.filter-btn {
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--border-medium);
+		background: var(--bg-primary);
+		color: var(--text-secondary);
+		border-radius: var(--radius);
+		cursor: pointer;
+		transition: all 0.2s ease;
+		font-size: var(--font-size-sm);
+	}
+	
+	.filter-btn:hover,
+	.filter-btn.active {
+		background: var(--primary);
+		color: white;
+		border-color: var(--primary);
+	}
+	
+	.featured-section {
+		margin-bottom: 4rem;
+	}
+	
+	.section-title {
+		font-size: var(--font-size-2xl);
+		margin-bottom: 2rem;
+		color: var(--text-primary);
+	}
+	
+	.featured-post {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		box-shadow: var(--shadow-md);
+	}
+	
+	.featured-image {
+		display: block;
+	}
+	
+	.featured-image img {
+		width: 100%;
+		height: 300px;
+		object-fit: cover;
+	}
+	
+	.featured-content {
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	
+	.featured-tag {
+		margin-bottom: 1rem;
+		align-self: flex-start;
+	}
+	
+	.featured-title {
+		font-size: var(--font-size-3xl);
+		margin-bottom: 1rem;
+		line-height: 1.2;
+	}
+	
+	.featured-title a {
+		color: var(--text-primary);
+		text-decoration: none;
+	}
+	
+	.featured-title a:hover {
+		color: var(--primary);
+	}
+	
+	.featured-description {
+		font-size: var(--font-size-lg);
+		color: var(--text-secondary);
+		margin-bottom: 1.5rem;
+		line-height: 1.6;
+	}
+	
+	.featured-meta {
+		display: flex;
+		gap: 1rem;
+		color: var(--text-muted);
+		font-size: var(--font-size-sm);
+	}
+	
+	.posts-section {
+		margin-bottom: 4rem;
+	}
+	
+	.posts-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+	
+	.post-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		transition: all 0.2s ease;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.post-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md);
+	}
+	
+	.post-image-link {
+		display: block;
+	}
+	
+	.post-image {
+		width: 100%;
+		height: 200px;
+		object-fit: cover;
+	}
+	
+	.post-content {
+		padding: 1.5rem;
+	}
+	
+	.post-meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1rem;
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+	}
+	
+	.post-title {
+		margin: 0 0 1rem 0;
+		font-size: var(--font-size-xl);
+		line-height: 1.3;
+	}
+	
+	.post-title a {
+		color: var(--text-primary);
+		text-decoration: none;
+	}
+	
+	.post-title a:hover {
+		color: var(--primary);
+	}
+	
+	.post-description {
+		margin: 0 0 1rem 0;
+		color: var(--text-secondary);
+		line-height: 1.6;
+	}
+	
+	.post-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem;
+	}
+	
+	.tag-small {
+		display: inline-block;
+		padding: 0.125rem 0.5rem;
+		background: var(--bg-secondary);
+		color: var(--text-muted);
+		border-radius: var(--radius);
+		font-size: var(--font-size-xs);
+	}
+	
+	@media (max-width: 768px) {
+		.featured-post {
+			grid-template-columns: 1fr;
+		}
+		
+		.featured-content {
+			padding: 1.5rem;
+		}
+		
+		.featured-title {
+			font-size: var(--font-size-2xl);
+		}
+		
+		.posts-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.category-filter {
+			justify-content: flex-start;
+		}
+	}
+</style>
+
+<script>
+	// Category filter functionality
+	document.addEventListener('DOMContentLoaded', () => {
+		const filterBtns = document.querySelectorAll('.filter-btn');
+		const postCards = document.querySelectorAll('.post-card');
+		
+		filterBtns.forEach(btn => {
+			btn.addEventListener('click', () => {
+				// Update active button
+				filterBtns.forEach(b => b.classList.remove('active'));
+				btn.classList.add('active');
+				
+				const category = (btn as HTMLElement).dataset.category;
+				
+				// Filter posts
+				postCards.forEach(card => {
+					const htmlCard = card as HTMLElement;
+					if (category === 'all' || htmlCard.dataset.category === category) {
+						htmlCard.style.display = 'block';
+					} else {
+						htmlCard.style.display = 'none';
+					}
+				});
+			});
+		});
+	});
+</script>

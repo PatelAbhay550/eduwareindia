@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_TITLE, CONTACT_EMAIL } from '../consts';
+---
+
+<Layout 
+	title="Privacy Policy - Eduware" 
+	description="Privacy Policy for Eduware. Learn how we protect your personal information and data while you prepare for competitive exams."
+	keywords={['privacy policy', 'data protection', 'user privacy', 'terms']}
+>
+	<div class="container">
+		<header class="page-header">
+			<h1>Privacy Policy</h1>
+			<p class="last-updated">Last updated: June 27, 2025</p>
+		</header>
+
+		<div class="policy-content">
+			<section class="policy-section">
+				<h2>1. Introduction</h2>
+				<p>Welcome to {SITE_TITLE}. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, and protect your information when you visit our website and use our services.</p>
+			</section>
+
+			<section class="policy-section">
+				<h2>2. Information We Collect</h2>
+				<h3>2.1 Information You Provide</h3>
+				<ul>
+					<li><strong>Contact Information:</strong> When you contact us via email, we collect your email address and any information you provide in your message.</li>
+					<li><strong>Feedback:</strong> Any feedback, suggestions, or comments you provide to improve our services.</li>
+				</ul>
+
+				<h3>2.2 Information Automatically Collected</h3>
+				<ul>
+					<li><strong>Usage Data:</strong> Information about how you use our website, including pages visited, time spent, and navigation patterns.</li>
+					<li><strong>Device Information:</strong> Information about your device, browser type, operating system, and IP address.</li>
+					<li><strong>Cookies:</strong> We may use cookies and similar technologies to enhance your browsing experience.</li>
+				</ul>
+			</section>
+
+			<section class="policy-section">
+				<h2>3. How We Use Your Information</h2>
+				<p>We use the information we collect for the following purposes:</p>
+				<ul>
+					<li>To provide and maintain our service</li>
+					<li>To respond to your inquiries and provide customer support</li>
+					<li>To improve our website and content</li>
+					<li>To analyze usage patterns and optimize user experience</li>
+					<li>To comply with legal obligations</li>
+				</ul>
+			</section>
+
+			<section class="policy-section">
+				<h2>4. Information Sharing</h2>
+				<p>We do not sell, trade, or otherwise transfer your personal information to third parties except in the following circumstances:</p>
+				<ul>
+					<li><strong>With Your Consent:</strong> We may share information with your explicit consent.</li>
+					<li><strong>Service Providers:</strong> We may share information with trusted third-party service providers who assist us in operating our website and providing services.</li>
+					<li><strong>Legal Requirements:</strong> We may disclose information if required by law or to protect our rights and the rights of others.</li>
+				</ul>
+			</section>
+
+			<section class="policy-section">
+				<h2>5. Data Security</h2>
+				<p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+			</section>
+
+			<section class="policy-section">
+				<h2>6. Cookies Policy</h2>
+				<p>Our website may use cookies to enhance your experience. Cookies are small files stored on your device that help us:</p>
+				<ul>
+					<li>Remember your preferences</li>
+					<li>Analyze website traffic and usage</li>
+					<li>Improve website functionality</li>
+				</ul>
+				<p>You can choose to disable cookies in your browser settings, but this may affect the functionality of our website.</p>
+			</section>
+
+			<section class="policy-section">
+				<h2>7. Third-Party Links</h2>
+				<p>Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these external sites. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+			</section>
+
+			<section class="policy-section">
+				<h2>8. Children's Privacy</h2>
+				<p>Our services are intended for users who are at least 13 years old. We do not knowingly collect personal information from children under 13. If we become aware that we have collected personal information from a child under 13, we will take steps to delete such information.</p>
+			</section>
+
+			<section class="policy-section">
+				<h2>9. Your Rights</h2>
+				<p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
+				<ul>
+					<li>The right to access your personal information</li>
+					<li>The right to correct inaccurate information</li>
+					<li>The right to delete your personal information</li>
+					<li>The right to object to processing</li>
+					<li>The right to data portability</li>
+				</ul>
+				<p>To exercise these rights, please contact us at {CONTACT_EMAIL}.</p>
+			</section>
+
+			<section class="policy-section">
+				<h2>10. International Users</h2>
+				<p>If you are accessing our website from outside India, please note that your information may be transferred to and processed in India. By using our services, you consent to such transfer and processing.</p>
+			</section>
+
+			<section class="policy-section">
+				<h2>11. Changes to This Policy</h2>
+				<p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. We encourage you to review this Privacy Policy periodically.</p>
+			</section>
+
+			<section class="policy-section">
+				<h2>12. Contact Us</h2>
+				<p>If you have any questions about this Privacy Policy or our privacy practices, please contact us:</p>
+				<div class="contact-info">
+					<p><strong>Email:</strong> <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+					<p><strong>Website:</strong> <a href="/">Eduware</a></p>
+				</div>
+			</section>
+
+			<div class="policy-footer">
+				<p><em>This Privacy Policy is designed to comply with applicable privacy laws including the Information Technology Act, 2000 of India and GDPR where applicable.</em></p>
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.page-header {
+		text-align: center;
+		margin-bottom: 3rem;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid var(--border-light);
+	}
+	
+	.page-header h1 {
+		font-size: var(--font-size-4xl);
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.last-updated {
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+		font-style: italic;
+	}
+	
+	.policy-content {
+		max-width: 800px;
+		margin: 0 auto;
+		line-height: 1.7;
+	}
+	
+	.policy-section {
+		margin-bottom: 3rem;
+	}
+	
+	.policy-section h2 {
+		font-size: var(--font-size-2xl);
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+		border-bottom: 2px solid var(--primary);
+		padding-bottom: 0.5rem;
+	}
+	
+	.policy-section h3 {
+		font-size: var(--font-size-xl);
+		margin: 1.5rem 0 1rem 0;
+		color: var(--text-primary);
+	}
+	
+	.policy-section p {
+		margin-bottom: 1rem;
+		color: var(--text-secondary);
+	}
+	
+	.policy-section ul {
+		margin-bottom: 1rem;
+		padding-left: 2rem;
+	}
+	
+	.policy-section li {
+		margin-bottom: 0.5rem;
+		color: var(--text-secondary);
+	}
+	
+	.policy-section li strong {
+		color: var(--text-primary);
+	}
+	
+	.contact-info {
+		background: var(--bg-secondary);
+		padding: 1.5rem;
+		border-radius: var(--radius);
+		border-left: 4px solid var(--primary);
+	}
+	
+	.contact-info p {
+		margin-bottom: 0.5rem;
+	}
+	
+	.contact-info a {
+		color: var(--primary);
+		text-decoration: none;
+	}
+	
+	.contact-info a:hover {
+		text-decoration: underline;
+	}
+	
+	.policy-footer {
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 1px solid var(--border-light);
+		text-align: center;
+	}
+	
+	.policy-footer p {
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+		font-style: italic;
+	}
+	
+	@media (max-width: 768px) {
+		.policy-content {
+			margin: 0 1rem;
+		}
+		
+		.policy-section ul {
+			padding-left: 1.5rem;
+		}
+	}
+</style>

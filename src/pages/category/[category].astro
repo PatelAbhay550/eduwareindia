@@ -1,0 +1,238 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { CATEGORIES } from '../../consts';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+export async function getStaticPaths() {
+	const allBlogPosts = await getCollection('blog');
+	
+	return CATEGORIES.map(category => {
+		const posts = allBlogPosts
+			.filter(post => post.data.category === category)
+			.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+		
+		return {
+			params: { 
+				category: category.toLowerCase().replace(/\s+/g, '-') 
+			},
+			props: { 
+				posts,
+				categoryName: category 
+			}
+		};
+	});
+}
+
+const { posts, categoryName } = Astro.props;
+const { category } = Astro.params;
+---
+
+<Layout 
+	title={`${categoryName} Articles - Eduware`}
+	description={`Explore our ${categoryName.toLowerCase()} tutorials, guides, and educational content.`}
+	keywords={[categoryName, 'tutorials', 'education', 'learning']}
+>
+	<div class="container">
+		<header class="page-header">
+			<nav class="breadcrumb">
+				<a href="/">Home</a>
+				<span>/</span>
+				<a href="/category">Categories</a>
+				<span>/</span>
+				<span>{categoryName}</span>
+			</nav>
+			<h1>{categoryName}</h1>
+			<p class="category-description">
+				{posts.length} article{posts.length !== 1 ? 's' : ''} in {categoryName}
+			</p>
+		</header>
+
+		{posts.length > 0 ? (
+			<div class="posts-grid">
+				{posts.map((post) => (
+					<article class="post-card">
+						{post.data.heroImage && (
+							<a href={`/blog/${post.data.slug || post.id}/`} class="post-image-link">
+								<img 
+									src={post.data.heroImage.src} 
+									alt={post.data.title}
+									class="post-image"
+								/>
+							</a>
+						)}
+						<div class="post-content">
+							<div class="post-meta">
+								<FormattedDate date={post.data.pubDate} />
+								{post.data.readingTime && (
+									<span class="reading-time">{post.data.readingTime} min read</span>
+								)}
+							</div>
+							<h2 class="post-title">
+								<a href={`/blog/${post.data.slug || post.id}/`}>{post.data.title}</a>
+							</h2>
+							<p class="post-description">{post.data.description}</p>
+							{post.data.tags && post.data.tags.length > 0 && (
+								<div class="post-tags">
+									{post.data.tags.map((tag) => (
+										<span class="tag">{tag}</span>
+									))}
+								</div>
+							)}
+						</div>
+					</article>
+				))}
+			</div>
+		) : (
+			<div class="empty-state">
+				<h2>No articles yet</h2>
+				<p>We haven't published any articles in this category yet. Check back soon!</p>
+				<a href="/blog" class="btn btn-primary">Browse All Articles</a>
+			</div>
+		)}
+	</div>
+</Layout>
+
+<style>
+	.page-header {
+		margin-bottom: 3rem;
+	}
+	
+	.breadcrumb {
+		margin-bottom: 1rem;
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+	}
+	
+	.breadcrumb a {
+		color: var(--primary);
+		text-decoration: none;
+	}
+	
+	.breadcrumb a:hover {
+		text-decoration: underline;
+	}
+	
+	.breadcrumb span {
+		margin: 0 0.5rem;
+	}
+	
+	.page-header h1 {
+		font-size: var(--font-size-4xl);
+		margin-bottom: 0.5rem;
+		color: var(--primary);
+	}
+	
+	.category-description {
+		font-size: var(--font-size-lg);
+		color: var(--text-secondary);
+		margin: 0;
+	}
+	
+	.posts-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+	
+	.post-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		transition: all 0.2s ease;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.post-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md);
+	}
+	
+	.post-image-link {
+		display: block;
+	}
+	
+	.post-image {
+		width: 100%;
+		height: 200px;
+		object-fit: cover;
+	}
+	
+	.post-content {
+		padding: 1.5rem;
+	}
+	
+	.post-meta {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1rem;
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+	}
+	
+	.reading-time {
+		position: relative;
+	}
+	
+	.reading-time::before {
+		content: '•';
+		margin-right: 0.5rem;
+	}
+	
+	.post-title {
+		margin: 0 0 1rem 0;
+		font-size: var(--font-size-xl);
+		line-height: 1.3;
+	}
+	
+	.post-title a {
+		color: var(--text-primary);
+		text-decoration: none;
+	}
+	
+	.post-title a:hover {
+		color: var(--primary);
+	}
+	
+	.post-description {
+		margin: 0 0 1rem 0;
+		color: var(--text-secondary);
+		line-height: 1.6;
+	}
+	
+	.post-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	
+	.empty-state {
+		text-align: center;
+		padding: 4rem 2rem;
+		background: var(--bg-secondary);
+		border-radius: var(--radius-lg);
+		margin-top: 2rem;
+	}
+	
+	.empty-state h2 {
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.empty-state p {
+		margin-bottom: 2rem;
+		color: var(--text-secondary);
+	}
+	
+	@media (max-width: 768px) {
+		.posts-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.page-header h1 {
+			font-size: var(--font-size-3xl);
+		}
+	}
+</style>

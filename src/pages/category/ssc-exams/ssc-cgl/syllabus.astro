@@ -1,0 +1,1180 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+
+const syllabusData = {
+	tier1: {
+		subjects: [
+			{
+				name: 'General Intelligence & Reasoning',
+				questions: 25,
+				marks: 50,
+				topics: [
+					'Analogies, Similarities and differences',
+					'Space visualization, Spatial orientation',
+					'Problem solving, Analysis, Judgement',
+					'Decision making, Visual memory',
+					'Discrimination, Observation',
+					'Relationship concepts, Arithmetical reasoning',
+					'Verbal and Figure classification',
+					'Arithmetic number series',
+					'Non-verbal series, Coding and decoding',
+					'Statement conclusion, Syllogistic reasoning'
+				],
+				tips: [
+					'Practice daily with at least 50 questions',
+					'Focus on pattern recognition',
+					'Time management is crucial - allocate 30 seconds per question',
+					'Master basic concepts before attempting complex problems'
+				]
+			},
+			{
+				name: 'General Awareness',
+				questions: 25,
+				marks: 50,
+				topics: [
+					'Current Affairs - National and International',
+					'History - Ancient, Medieval, Modern Indian History',
+					'Geography - Physical, Human, Economic Geography of India and World',
+					'Indian Polity and Constitution',
+					'Economic Scene in India',
+					'General Science and Scientific Research',
+					'Sports, Awards and Honours',
+					'Books and Authors',
+					'Important Days and Dates',
+					'Art and Culture'
+				],
+				tips: [
+					'Read newspapers daily for current affairs',
+					'Focus on last 6 months current affairs',
+					'Make notes of important facts and figures',
+					'Revise monthly current affairs compilations'
+				]
+			},
+			{
+				name: 'Quantitative Aptitude',
+				questions: 25,
+				marks: 50,
+				topics: [
+					'Number Systems - HCF, LCM, Divisibility Rules',
+					'Simplification and Approximation',
+					'Percentage, Ratio and Proportion',
+					'Average, Profit and Loss',
+					'Simple and Compound Interest',
+					'Time and Work, Time and Distance',
+					'Mensuration - 2D and 3D figures',
+					'Data Interpretation - Tables, Charts, Graphs',
+					'Algebra - Basic algebraic identities',
+					'Geometry - Lines, Angles, Triangles, Circles',
+					'Trigonometry - Basic ratios, Heights and Distances',
+					'Statistics - Mean, Median, Mode'
+				],
+				tips: [
+					'Master basic arithmetic and shortcuts',
+					'Practice mental math for faster calculations',
+					'Learn important formulas and their applications',
+					'Focus on accuracy over speed initially'
+				]
+			},
+			{
+				name: 'English Comprehension',
+				questions: 25,
+				marks: 50,
+				topics: [
+					'Reading Comprehension',
+					'Vocabulary - Synonyms, Antonyms',
+					'Grammar - Parts of Speech, Tenses',
+					'Sentence Structure and Correction',
+					'Active and Passive Voice',
+					'Direct and Indirect Speech',
+					'Idioms and Phrases',
+					'One Word Substitution',
+					'Fill in the blanks',
+					'Spelling Test',
+					'Error Spotting',
+					'Para jumbles'
+				],
+				tips: [
+					'Read English newspapers and magazines daily',
+					'Build vocabulary with 10 new words daily',
+					'Practice grammar rules regularly',
+					'Focus on reading comprehension skills'
+				]
+			}
+		]
+	},
+	tier2: {
+		papers: [
+			{
+				name: 'Paper I - Quantitative Abilities',
+				duration: '2 Hours',
+				questions: 100,
+				marks: 200,
+				description: 'Advanced level questions from Tier 1 Quantitative Aptitude syllabus',
+				sections: [
+					'Number System',
+					'Computation of Whole Numbers',
+					'Decimal and Fractions',
+					'Relationship between numbers',
+					'Fundamental arithmetical operations',
+					'Percentages',
+					'Ratio and Proportion',
+					'Square roots',
+					'Averages',
+					'Interest',
+					'Profit and Loss',
+					'Discount',
+					'Partnership Business',
+					'Mixture and Allegation',
+					'Time and distance',
+					'Time and work',
+					'Basic algebraic identities of School Algebra',
+					'Linear equations in one variable',
+					'Graphs of Linear Equations',
+					'Triangle and its various kinds of centres',
+					'Congruence and similarity of triangles',
+					'Circle and its chords, tangents, angles subtended by chords of a circle',
+					'Areas of triangle, quadrilaterals, regular polygons, circle',
+					'Right Prism, Right Circular Cone, Right Circular Cylinder, Sphere',
+					'Heights and Distances',
+					'Histogram, Frequency polygon, Bar-diagram, Pie-chart'
+				]
+			},
+			{
+				name: 'Paper II - English Language & Comprehension',
+				duration: '2 Hours',
+				questions: 200,
+				marks: 200,
+				description: 'Advanced level questions from Tier 1 English syllabus',
+				sections: [
+					'Vocabulary',
+					'Grammar',
+					'Sentence structure',
+					'Synonyms, Antonyms',
+					'Sentence completion',
+					'Phrases and Idioms',
+					'One word substitution',
+					'Improvement of sentences',
+					'Active/Passive Voice of Verbs',
+					'Conversion into Direct/Indirect narration',
+					'Shuffling of Sentence parts',
+					'Shuffling of Sentences in a passage',
+					'Cloze Passage',
+					'Comprehension Passage'
+				]
+			},
+			{
+				name: 'Paper III - Statistics',
+				duration: '2 Hours',
+				questions: 100,
+				marks: 200,
+				description: 'For Statistical Investigator Grade-II & Compiler posts only',
+				sections: [
+					'Collection, Classification and Presentation of Statistical Data',
+					'Measures of Central Tendency',
+					'Measures of Dispersion',
+					'Moments, Skewness and Kurtosis',
+					'Correlation and Regression',
+					'Probability Theory',
+					'Random Variable and Probability Distributions',
+					'Sampling Theory',
+					'Statistical Inference',
+					'Analysis of Variance',
+					'Time Series Analysis',
+					'Index Numbers'
+				]
+			},
+			{
+				name: 'Paper IV - General Studies (Finance & Economics)',
+				duration: '2 Hours',
+				questions: 100,
+				marks: 200,
+				description: 'For Assistant Audit Officer/Assistant Accounts Officer posts only',
+				sections: [
+					'Finance and Accounts - Fundamental principles and basic concept of Accounting',
+					'Financial Accounting',
+					'Basic concepts of Economics and introduction to Micro Economics',
+					'Theory of Demand and Supply',
+					'Production and cost',
+					'Forms of Market and price determination',
+					'Indian Economy',
+					'Economic Reforms in India',
+					'Money and Banking',
+					'Role of Information Technology in Governance'
+				]
+			}
+		]
+	},
+	tier3: {
+		name: 'Descriptive Paper',
+		duration: '60 minutes',
+		marks: 100,
+		description: 'Pen and Paper mode (offline)',
+		sections: [
+			'Essay Writing (200-250 words)',
+			'Letter/Application Writing',
+			'Precis Writing'
+		],
+		topics: [
+			'Essay Topics: Social Issues, Economic Issues, Political Issues, Environmental Issues',
+			'Letter Writing: Formal and Official letters',
+			'Precis: Comprehension and summary writing'
+		],
+		tips: [
+			'Practice writing daily',
+			'Improve handwriting and presentation',
+			'Read editorials for idea development',
+			'Time management is crucial'
+		]
+	}
+};
+
+const studyPlan = [
+	{
+		phase: 'Phase 1: Foundation (2-3 months)',
+		duration: '2-3 months',
+		focus: 'Building basic concepts',
+		subjects: [
+			{
+				subject: 'Quantitative Aptitude',
+				time: '2 hours daily',
+				strategy: 'Start with NCERT books (6th-10th), practice basic arithmetic'
+			},
+			{
+				subject: 'English',
+				time: '1 hour daily',
+				strategy: 'Focus on grammar rules, vocabulary building'
+			},
+			{
+				subject: 'Reasoning',
+				time: '1 hour daily',
+				strategy: 'Learn basic patterns and concepts'
+			},
+			{
+				subject: 'General Awareness',
+				time: '1 hour daily',
+				strategy: 'Read NCERT books for history, geography, polity'
+			}
+		]
+	},
+	{
+		phase: 'Phase 2: Practice (3-4 months)',
+		duration: '3-4 months',
+		focus: 'Intensive practice and speed building',
+		subjects: [
+			{
+				subject: 'Quantitative Aptitude',
+				time: '2.5 hours daily',
+				strategy: 'Solve previous year questions, learn shortcuts'
+			},
+			{
+				subject: 'English',
+				time: '1.5 hours daily',
+				strategy: 'Practice comprehension, error detection'
+			},
+			{
+				subject: 'Reasoning',
+				time: '1.5 hours daily',
+				strategy: 'Advanced level questions, pattern recognition'
+			},
+			{
+				subject: 'General Awareness',
+				time: '1.5 hours daily',
+				strategy: 'Current affairs focus, monthly magazines'
+			}
+		]
+	},
+	{
+		phase: 'Phase 3: Mock Tests & Revision (1-2 months)',
+		duration: '1-2 months',
+		focus: 'Test taking strategy and final revision',
+		subjects: [
+			{
+				subject: 'Mock Tests',
+				time: '2 hours daily',
+				strategy: 'Full-length tests, analyze performance'
+			},
+			{
+				subject: 'Weak Areas',
+				time: '2 hours daily',
+				strategy: 'Focus on identified weak topics'
+			},
+			{
+				subject: 'Current Affairs',
+				time: '1 hour daily',
+				strategy: 'Last 6 months current affairs revision'
+			},
+			{
+				subject: 'Quick Revision',
+				time: '1 hour daily',
+				strategy: 'Formula revision, important facts'
+			}
+		]
+	}
+];
+---
+
+<Layout 
+	title="SSC CGL Syllabus 2025 - Complete Tier 1, 2, 3 Syllabus | Eduware"
+	description="Complete SSC CGL 2025 syllabus for Tier 1, Tier 2, and Tier 3 with detailed topics, study plan, and preparation tips. Download PDF syllabus."
+	keywords={['SSC CGL syllabus 2025', 'SSC CGL Tier 1 syllabus', 'SSC CGL Tier 2 syllabus', 'SSC CGL preparation']}
+>
+	<div class="container">
+		<!-- Header -->
+		<header class="syllabus-header">
+			<h1>SSC CGL Syllabus 2025</h1>
+			<p>Complete syllabus for Tier 1, Tier 2, and Tier 3 examinations</p>
+			<div class="header-actions">
+				<a href="/category/ssc-exams/ssc-cgl" class="btn btn-secondary">← Back to SSC CGL</a>
+				<button class="btn btn-primary" onclick="window.print()">📄 Download PDF</button>
+			</div>
+		</header>
+
+		<!-- Navigation -->
+		<div class="syllabus-nav">
+			<button class="nav-btn active" data-tier="tier1">Tier 1 Syllabus</button>
+			<button class="nav-btn" data-tier="tier2">Tier 2 Syllabus</button>
+			<button class="nav-btn" data-tier="tier3">Tier 3 Syllabus</button>
+			<button class="nav-btn" data-tier="study-plan">Study Plan</button>
+		</div>
+
+		<!-- Tier 1 Syllabus -->
+		<div id="tier1" class="tier-content active">
+			<div class="tier-header">
+				<h2>SSC CGL Tier 1 Syllabus</h2>
+				<div class="tier-info">
+					<div class="info-item">
+						<span class="label">Total Questions:</span>
+						<span class="value">100</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Total Marks:</span>
+						<span class="value">200</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Duration:</span>
+						<span class="value">60 minutes</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Negative Marking:</span>
+						<span class="value">0.50 marks</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="subjects-container">
+				{syllabusData.tier1.subjects.map((subject, index) => (
+					<div class="subject-card">
+						<div class="subject-header">
+							<h3>{subject.name}</h3>
+							<div class="subject-stats">
+								<span class="stat">Questions: {subject.questions}</span>
+								<span class="stat">Marks: {subject.marks}</span>
+							</div>
+						</div>
+						
+						<div class="subject-content">
+							<div class="topics-section">
+								<h4>Important Topics</h4>
+								<div class="topics-grid">
+									{subject.topics.map((topic) => (
+										<div class="topic-item">{topic}</div>
+									))}
+								</div>
+							</div>
+							
+							<div class="tips-section">
+								<h4>Preparation Tips</h4>
+								<ul class="tips-list">
+									{subject.tips.map((tip) => (
+										<li>{tip}</li>
+									))}
+								</ul>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+
+		<!-- Tier 2 Syllabus -->
+		<div id="tier2" class="tier-content">
+			<div class="tier-header">
+				<h2>SSC CGL Tier 2 Syllabus</h2>
+				<div class="tier-description">
+					<p>Tier 2 consists of four papers. Paper I and II are compulsory for all posts, while Paper III and IV are for specific posts only.</p>
+				</div>
+			</div>
+
+			<div class="papers-container">
+				{syllabusData.tier2.papers.map((paper, index) => (
+					<div class="paper-card">
+						<div class="paper-header">
+							<h3>{paper.name}</h3>
+							<div class="paper-info">
+								<span class="info">Duration: {paper.duration}</span>
+								<span class="info">Questions: {paper.questions}</span>
+								<span class="info">Marks: {paper.marks}</span>
+							</div>
+						</div>
+						
+						<div class="paper-description">
+							<p>{paper.description}</p>
+						</div>
+						
+						<div class="paper-sections">
+							<h4>Detailed Syllabus</h4>
+							<div class="sections-grid">
+								{paper.sections.map((section) => (
+									<div class="section-item">{section}</div>
+								))}
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+
+		<!-- Tier 3 Syllabus -->
+		<div id="tier3" class="tier-content">
+			<div class="tier-header">
+				<h2>SSC CGL Tier 3 Syllabus</h2>
+				<div class="tier-info">
+					<div class="info-item">
+						<span class="label">Type:</span>
+						<span class="value">{syllabusData.tier3.description}</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Duration:</span>
+						<span class="value">{syllabusData.tier3.duration}</span>
+					</div>
+					<div class="info-item">
+						<span class="label">Total Marks:</span>
+						<span class="value">{syllabusData.tier3.marks}</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="tier3-content">
+				<div class="tier3-card">
+					<h3>Exam Components</h3>
+					<div class="components-list">
+						{syllabusData.tier3.sections.map((section) => (
+							<div class="component-item">{section}</div>
+						))}
+					</div>
+				</div>
+
+				<div class="tier3-card">
+					<h3>Important Topics</h3>
+					<div class="topics-list">
+						{syllabusData.tier3.topics.map((topic) => (
+							<div class="topic-item">{topic}</div>
+						))}
+					</div>
+				</div>
+
+				<div class="tier3-card">
+					<h3>Preparation Tips</h3>
+					<ul class="tips-list">
+						{syllabusData.tier3.tips.map((tip) => (
+							<li>{tip}</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- Study Plan -->
+		<div id="study-plan" class="tier-content">
+			<div class="tier-header">
+				<h2>SSC CGL Preparation Study Plan</h2>
+				<div class="tier-description">
+					<p>A comprehensive 6-9 months study plan to crack SSC CGL examination with proper time allocation for each subject.</p>
+				</div>
+			</div>
+
+			<div class="study-plan-container">
+				{studyPlan.map((phase, index) => (
+					<div class="phase-card">
+						<div class="phase-header">
+							<h3>{phase.phase}</h3>
+							<div class="phase-info">
+								<span class="duration">{phase.duration}</span>
+								<span class="focus">{phase.focus}</span>
+							</div>
+						</div>
+						
+						<div class="phase-content">
+							<div class="subjects-plan">
+								{phase.subjects.map((subject) => (
+									<div class="subject-plan-item">
+										<div class="subject-name">{subject.subject}</div>
+										<div class="subject-time">{subject.time}</div>
+										<div class="subject-strategy">{subject.strategy}</div>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+
+			<div class="additional-tips">
+				<h3>Additional Preparation Tips</h3>
+				<div class="tips-grid">
+					<div class="tip-card">
+						<h4>📚 Study Materials</h4>
+						<ul>
+							<li>NCERT books (6th-12th) for basic concepts</li>
+							<li>Previous year question papers (last 10 years)</li>
+							<li>Current affairs monthly magazines</li>
+							<li>Standard reference books for each subject</li>
+						</ul>
+					</div>
+					<div class="tip-card">
+						<h4>⏰ Time Management</h4>
+						<ul>
+							<li>Allocate specific time slots for each subject</li>
+							<li>Take regular breaks to avoid burnout</li>
+							<li>Practice mock tests in timed conditions</li>
+							<li>Maintain consistency in study schedule</li>
+						</ul>
+					</div>
+					<div class="tip-card">
+						<h4>📊 Performance Tracking</h4>
+						<ul>
+							<li>Keep track of daily study hours</li>
+							<li>Analyze mock test performance regularly</li>
+							<li>Identify and work on weak areas</li>
+							<li>Maintain error log for revision</li>
+						</ul>
+					</div>
+					<div class="tip-card">
+						<h4>🎯 Exam Strategy</h4>
+						<ul>
+							<li>Attempt easier questions first</li>
+							<li>Avoid random guessing due to negative marking</li>
+							<li>Keep calm and manage exam stress</li>
+							<li>Revise important formulas before exam</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Quick Resources -->
+		<div class="resources-section">
+			<h2>Quick Resources</h2>
+			<div class="resources-grid">
+				<a href="/questions?exam=ssc-cgl" class="resource-card">
+					<div class="resource-icon">❓</div>
+					<h3>Practice Questions</h3>
+					<p>Solve topic-wise and mock test questions</p>
+				</a>
+				<a href="/blog?exam=ssc-cgl" class="resource-card">
+					<div class="resource-icon">📖</div>
+					<h3>Study Materials</h3>
+					<p>Comprehensive notes and guides</p>
+				</a>
+				<a href="/category/ssc-exams/ssc-cgl" class="resource-card">
+					<div class="resource-icon">ℹ️</div>
+					<h3>Exam Information</h3>
+					<p>Notification, eligibility, and updates</p>
+				</a>
+				<a href="#" class="resource-card">
+					<div class="resource-icon">📊</div>
+					<h3>Previous Papers</h3>
+					<p>Last 10 years question papers</p>
+				</a>
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.syllabus-header {
+		text-align: center;
+		margin-bottom: 3rem;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid var(--border-light);
+	}
+	
+	.syllabus-header h1 {
+		font-size: var(--font-size-4xl);
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.syllabus-header p {
+		font-size: var(--font-size-lg);
+		color: var(--text-secondary);
+		margin-bottom: 2rem;
+	}
+	
+	.header-actions {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
+	.syllabus-nav {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 3rem;
+		border-bottom: 1px solid var(--border-light);
+		overflow-x: auto;
+	}
+	
+	.nav-btn {
+		padding: 1rem 2rem;
+		border: none;
+		background: transparent;
+		color: var(--text-secondary);
+		cursor: pointer;
+		border-bottom: 2px solid transparent;
+		transition: all 0.2s ease;
+		white-space: nowrap;
+		font-size: var(--font-size-base);
+	}
+	
+	.nav-btn:hover,
+	.nav-btn.active {
+		color: var(--primary);
+		border-bottom-color: var(--primary);
+	}
+	
+	.tier-content {
+		display: none;
+	}
+	
+	.tier-content.active {
+		display: block;
+	}
+	
+	.tier-header {
+		margin-bottom: 3rem;
+	}
+	
+	.tier-header h2 {
+		font-size: var(--font-size-3xl);
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.tier-info {
+		display: flex;
+		gap: 2rem;
+		flex-wrap: wrap;
+		background: var(--bg-secondary);
+		padding: 1.5rem;
+		border-radius: var(--radius-lg);
+		margin-top: 1rem;
+	}
+	
+	.info-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+	
+	.label {
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+		margin-bottom: 0.5rem;
+	}
+	
+	.value {
+		font-size: var(--font-size-lg);
+		font-weight: 600;
+		color: var(--text-primary);
+	}
+	
+	.tier-description {
+		background: var(--primary-light);
+		padding: 1.5rem;
+		border-radius: var(--radius);
+		margin-top: 1rem;
+	}
+	
+	.tier-description p {
+		color: var(--primary-dark);
+		margin: 0;
+	}
+	
+	.subjects-container {
+		display: grid;
+		gap: 3rem;
+	}
+	
+	.subject-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.subject-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 2rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--border-light);
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	
+	.subject-header h3 {
+		margin: 0;
+		color: var(--primary);
+		font-size: var(--font-size-xl);
+	}
+	
+	.subject-stats {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+	
+	.stat {
+		background: var(--bg-secondary);
+		padding: 0.5rem 1rem;
+		border-radius: var(--radius);
+		font-size: var(--font-size-sm);
+		color: var(--text-secondary);
+	}
+	
+	.subject-content {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		gap: 2rem;
+	}
+	
+	.topics-section h4,
+	.tips-section h4 {
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.topics-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 0.5rem;
+	}
+	
+	.topic-item {
+		background: var(--bg-secondary);
+		padding: 0.75rem;
+		border-radius: var(--radius);
+		font-size: var(--font-size-sm);
+		color: var(--text-secondary);
+		border-left: 3px solid var(--primary);
+	}
+	
+	.tips-list {
+		list-style: none;
+		padding: 0;
+	}
+	
+	.tips-list li {
+		background: var(--primary-light);
+		color: var(--primary-dark);
+		padding: 1rem;
+		border-radius: var(--radius);
+		margin-bottom: 0.5rem;
+		position: relative;
+		padding-left: 2rem;
+	}
+	
+	.tips-list li:before {
+		content: "💡";
+		position: absolute;
+		left: 0.5rem;
+		top: 1rem;
+	}
+	
+	.papers-container {
+		display: grid;
+		gap: 3rem;
+	}
+	
+	.paper-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.paper-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 1rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--border-light);
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	
+	.paper-header h3 {
+		margin: 0;
+		color: var(--primary);
+		font-size: var(--font-size-xl);
+	}
+	
+	.paper-info {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+	
+	.info {
+		background: var(--bg-secondary);
+		padding: 0.5rem 1rem;
+		border-radius: var(--radius);
+		font-size: var(--font-size-sm);
+		color: var(--text-secondary);
+	}
+	
+	.paper-description {
+		margin-bottom: 2rem;
+	}
+	
+	.paper-description p {
+		color: var(--text-secondary);
+		font-style: italic;
+	}
+	
+	.paper-sections h4 {
+		margin-bottom: 1rem;
+		color: var(--text-primary);
+	}
+	
+	.sections-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 0.5rem;
+	}
+	
+	.section-item {
+		background: var(--bg-secondary);
+		padding: 1rem;
+		border-radius: var(--radius);
+		font-size: var(--font-size-sm);
+		color: var(--text-secondary);
+		border-left: 3px solid var(--primary);
+	}
+	
+	.tier3-content {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	
+	.tier3-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.tier3-card h3 {
+		margin-bottom: 1.5rem;
+		color: var(--primary);
+	}
+	
+	.components-list,
+	.topics-list {
+		display: grid;
+		gap: 0.5rem;
+	}
+	
+	.component-item {
+		background: var(--bg-secondary);
+		padding: 1rem;
+		border-radius: var(--radius);
+		color: var(--text-secondary);
+		border-left: 3px solid var(--primary);
+	}
+	
+	.study-plan-container {
+		display: grid;
+		gap: 3rem;
+	}
+	
+	.phase-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.phase-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 2rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--border-light);
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	
+	.phase-header h3 {
+		margin: 0;
+		color: var(--primary);
+		font-size: var(--font-size-xl);
+	}
+	
+	.phase-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		text-align: right;
+	}
+	
+	.duration {
+		background: var(--primary-light);
+		color: var(--primary-dark);
+		padding: 0.5rem 1rem;
+		border-radius: var(--radius);
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+	}
+	
+	.focus {
+		color: var(--text-secondary);
+		font-size: var(--font-size-sm);
+		font-style: italic;
+	}
+	
+	.subjects-plan {
+		display: grid;
+		gap: 1rem;
+	}
+	
+	.subject-plan-item {
+		background: var(--bg-secondary);
+		padding: 1.5rem;
+		border-radius: var(--radius);
+		display: grid;
+		grid-template-columns: 1fr 120px;
+		gap: 1rem;
+		align-items: center;
+	}
+	
+	.subject-name {
+		font-weight: 600;
+		color: var(--text-primary);
+	}
+	
+	.subject-time {
+		background: var(--primary);
+		color: white;
+		padding: 0.5rem;
+		border-radius: var(--radius);
+		text-align: center;
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+	}
+	
+	.subject-strategy {
+		grid-column: 1 / -1;
+		color: var(--text-secondary);
+		font-size: var(--font-size-sm);
+		margin-top: 0.5rem;
+	}
+	
+	.additional-tips {
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 1px solid var(--border-light);
+	}
+	
+	.additional-tips h3 {
+		text-align: center;
+		margin-bottom: 2rem;
+		color: var(--text-primary);
+	}
+	
+	.tips-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	
+	.tip-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.tip-card h4 {
+		margin-bottom: 1rem;
+		color: var(--primary);
+	}
+	
+	.tip-card ul {
+		list-style: none;
+		padding: 0;
+	}
+	
+	.tip-card li {
+		padding: 0.5rem 0;
+		color: var(--text-secondary);
+		border-bottom: 1px solid var(--border-light);
+		position: relative;
+		padding-left: 1rem;
+	}
+	
+	.tip-card li:before {
+		content: "•";
+		color: var(--primary);
+		font-weight: bold;
+		position: absolute;
+		left: 0;
+	}
+	
+	.tip-card li:last-child {
+		border-bottom: none;
+	}
+	
+	.resources-section {
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 1px solid var(--border-light);
+	}
+	
+	.resources-section h2 {
+		text-align: center;
+		margin-bottom: 2rem;
+		color: var(--text-primary);
+	}
+	
+	.resources-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+	}
+	
+	.resource-card {
+		background: var(--bg-primary);
+		border: 1px solid var(--border-light);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		text-align: center;
+		text-decoration: none;
+		color: inherit;
+		transition: all 0.2s ease;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.resource-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+		border-color: var(--primary);
+	}
+	
+	.resource-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.resource-card h3 {
+		margin-bottom: 0.5rem;
+		color: var(--text-primary);
+	}
+	
+	.resource-card p {
+		color: var(--text-secondary);
+		font-size: var(--font-size-sm);
+		margin: 0;
+	}
+	
+	@media (max-width: 768px) {
+		.subject-content {
+			grid-template-columns: 1fr;
+		}
+		
+		.topics-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.sections-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.tier3-content {
+			grid-template-columns: 1fr;
+		}
+		
+		.subject-plan-item {
+			grid-template-columns: 1fr;
+			text-align: center;
+		}
+		
+		.subject-time {
+			justify-self: center;
+			width: 120px;
+		}
+		
+		.subject-strategy {
+			grid-column: 1;
+		}
+		
+		.phase-info {
+			text-align: left;
+		}
+		
+		.tips-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.header-actions {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+	
+	@media print {
+		.header-actions,
+		.syllabus-nav,
+		.resources-section {
+			display: none;
+		}
+		
+		.tier-content {
+			display: block !important;
+		}
+	}
+</style>
+
+<script>
+	// Navigation functionality
+	document.addEventListener('DOMContentLoaded', () => {
+		const navBtns = document.querySelectorAll('.nav-btn');
+		const tierContents = document.querySelectorAll('.tier-content');
+		
+		navBtns.forEach(btn => {
+			btn.addEventListener('click', () => {
+				const targetTier = btn.dataset.tier;
+				
+				// Remove active class from all buttons and contents
+				navBtns.forEach(b => b.classList.remove('active'));
+				tierContents.forEach(c => c.classList.remove('active'));
+				
+				// Add active class to clicked button and corresponding content
+				btn.classList.add('active');
+				document.getElementById(targetTier)?.classList.add('active');
+			});
+		});
+	});
+</script>

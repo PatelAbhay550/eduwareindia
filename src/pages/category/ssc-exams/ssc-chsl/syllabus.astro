@@ -1,0 +1,504 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+
+const syllabusData = {
+	tier1: {
+		name: "Tier 1 - Computer Based Examination",
+		duration: "60 minutes",
+		questions: "100 questions",
+		marks: "200 marks",
+		subjects: [
+			{
+				name: 'General Intelligence and Reasoning',
+				questions: 25,
+				marks: 50,
+				topics: [
+					{
+						category: "Logical Reasoning",
+						items: ['Analogies', 'Similarities and Differences', 'Space visualization', 'Problem solving', 'Analysis and judgment', 'Decision making', 'Visual memory', 'Discriminating observation', 'Relationship concepts', 'Arithmetical reasoning']
+					},
+					{
+						category: "Verbal Reasoning", 
+						items: ['Verbal and figure classification', 'Arithmetical number series', 'Non-verbal series', 'Coding and decoding', 'Statement conclusion', 'Syllogistic reasoning']
+					},
+					{
+						category: "Non-Verbal Reasoning",
+						items: ['Figural classification', 'Figural series', 'Figural analogy', 'Number series', 'Embedded figures', 'Figural completion', 'Paper cutting', 'Paper folding']
+					}
+				]
+			},
+			{
+				name: 'General Knowledge',
+				questions: 25,
+				marks: 50,
+				topics: [
+					{
+						category: "Current Affairs",
+						items: ['National and International events', 'Sports', 'Awards and honors', 'Important dates', 'Books and authors', 'Current affairs of last 6 months']
+					},
+					{
+						category: "Indian History",
+						items: ['Ancient India', 'Medieval India', 'Modern India', 'Freedom struggle', 'Important battles', 'Dynasties and rulers']
+					},
+					{
+						category: "Geography",
+						items: ['Physical geography', 'Indian geography', 'World geography', 'Economic geography', 'Climate and weather', 'Natural resources']
+					},
+					{
+						category: "Indian Polity",
+						items: ['Constitution', 'Fundamental rights and duties', 'Government structure', 'Electoral system', 'Judiciary', 'Parliament and state legislatures']
+					},
+					{
+						category: "Economics",
+						items: ['Indian economy', 'Economic survey', 'Budget', 'Banking system', 'Economic planning', 'International trade']
+					},
+					{
+						category: "General Science",
+						items: ['Physics', 'Chemistry', 'Biology', 'Environmental science', 'Computer awareness', 'Space technology']
+					}
+				]
+			},
+			{
+				name: 'Quantitative Aptitude',
+				questions: 25,
+				marks: 50,
+				topics: [
+					{
+						category: "Arithmetic",
+						items: ['Number systems', 'Computation of whole numbers', 'Decimals and fractions', 'Relationship between numbers', 'Fundamental arithmetical operations', 'Percentages', 'Ratio and proportion', 'Square roots', 'Averages', 'Interest (Simple and Compound)', 'Profit and Loss', 'Discount', 'Partnership business', 'Mixture and alligation', 'Time and distance', 'Time and work']
+					},
+					{
+						category: "Algebra",
+						items: ['Basic algebraic identities of School Algebra', 'Elementary surds', 'Graphs of linear equations', 'Triangle and its various kinds of centres', 'Congruence and similarity of triangles']
+					},
+					{
+						category: "Geometry",
+						items: ['Circle and its chords', 'Tangents', 'Angles subtended by chords of a circle', 'Common tangents to two or more circles', 'Triangle', 'Quadrilaterals', 'Regular polygons', 'Circle', 'Right prism', 'Right circular cone', 'Right circular cylinder', 'Sphere', 'Hemispheres', 'Rectangular parallelepiped', 'Regular right pyramid with triangular or square base']
+					},
+					{
+						category: "Trigonometry",
+						items: ['Trigonometry', 'Trigonometric ratios', 'Degree and radian measures', 'Standard identities', 'Complementary angles', 'Heights and distances']
+					},
+					{
+						category: "Statistics",
+						items: ['Use of tables and graphs', 'Histogram', 'Frequency polygon', 'Bar diagram', 'Pie chart']
+					}
+				]
+			},
+			{
+				name: 'English Language',
+				questions: 25,
+				marks: 50,
+				topics: [
+					{
+						category: "Vocabulary",
+						items: ['Synonyms', 'Antonyms', 'One word substitution', 'Idioms and phrases', 'Meaning of words', 'Word formation']
+					},
+					{
+						category: "Grammar",
+						items: ['Parts of speech', 'Tenses', 'Voice (Active/Passive)', 'Narration (Direct/Indirect)', 'Prepositions', 'Articles', 'Subject-verb agreement', 'Degrees of comparison']
+					},
+					{
+						category: "Reading Comprehension",
+						items: ['Unseen passages', 'Main idea', 'Supporting details', 'Inference', 'Tone and style', 'Vocabulary in context']
+					},
+					{
+						category: "Sentence Improvement",
+						items: ['Error spotting', 'Sentence correction', 'Fill in the blanks', 'Para jumbles', 'Cloze test']
+					}
+				]
+			}
+		]
+	},
+	tier2: {
+		name: "Tier 2 - Descriptive Paper",
+		duration: "60 minutes",
+		marks: "100 marks",
+		mode: "Pen and Paper",
+		subjects: [
+			{
+				name: 'Essay Writing',
+				marks: 50,
+				topics: [
+					{
+						category: "Essay Types",
+						items: ['Argumentative essays', 'Descriptive essays', 'Narrative essays', 'Expository essays']
+					},
+					{
+						category: "Essay Topics",
+						items: ['Social issues', 'Economic problems', 'Political issues', 'Environmental concerns', 'Technology and society', 'Education system', 'Healthcare', 'Women empowerment', 'Digital India', 'Current national issues']
+					}
+				]
+			},
+			{
+				name: 'Letter/Application Writing',
+				marks: 50,
+				topics: [
+					{
+						category: "Formal Letters",
+						items: ['Official letters', 'Business letters', 'Complaint letters', 'Request letters', 'Inquiry letters']
+					},
+					{
+						category: "Applications",
+						items: ['Job applications', 'Leave applications', 'Transfer applications', 'Scholarship applications', 'Admission applications']
+					}
+				]
+			}
+		]
+	},
+	tier3: {
+		name: "Tier 3 - Skill Test/Typing Test",
+		mode: "Computer Based",
+		tests: [
+			{
+				post: "Data Entry Operator (DEO)",
+				test: "Skill Test (Data Entry Speed Test)",
+				requirement: "8,000 key depressions per hour on computer",
+				duration: "15 minutes"
+			},
+			{
+				post: "Lower Division Clerk (LDC) / Junior Secretariat Assistant (JSA)",
+				test: "Typing Test",
+				requirement: "35 words per minute in English OR 30 words per minute in Hindi",
+				duration: "10 minutes"
+			}
+		]
+	}
+};
+
+const studyPlan = {
+	"3_months": [
+		{
+			month: "Month 1",
+			focus: "Foundation Building",
+			topics: [
+				"Complete basic mathematics concepts",
+				"Learn fundamental English grammar rules",
+				"Study basic reasoning patterns",
+				"Cover ancient and medieval Indian history",
+				"Start current affairs reading (newspapers)"
+			]
+		},
+		{
+			month: "Month 2", 
+			focus: "Concept Strengthening",
+			topics: [
+				"Advanced arithmetic and algebra",
+				"Reading comprehension practice",
+				"Logical and analytical reasoning",
+				"Modern Indian history and geography",
+				"Indian polity basics and constitution"
+			]
+		},
+		{
+			month: "Month 3",
+			focus: "Practice & Revision",
+			topics: [
+				"Daily mock tests and previous papers",
+				"Time management practice",
+				"Weak area improvement",
+				"Essay and letter writing practice",
+				"Current affairs revision"
+			]
+		}
+	]
+};
+
+const preparationTips = [
+	{
+		subject: "General Intelligence & Reasoning",
+		tips: [
+			"Practice different types of reasoning questions daily",
+			"Focus on pattern recognition and logical thinking",
+			"Solve puzzles and brain teasers regularly",
+			"Time yourself while solving reasoning questions"
+		]
+	},
+	{
+		subject: "General Knowledge",
+		tips: [
+			"Read newspapers daily for current affairs",
+			"Make notes of important events and dates",
+			"Use mnemonics for historical dates and events",
+			"Focus on last 6 months current affairs for the exam"
+		]
+	},
+	{
+		subject: "Quantitative Aptitude",
+		tips: [
+			"Learn shortcuts and tricks for quick calculations",
+			"Practice mental math regularly",
+			"Focus on time and work, percentage, and profit-loss",
+			"Solve at least 25 questions daily"
+		]
+	},
+	{
+		subject: "English Language",
+		tips: [
+			"Read English newspapers and magazines regularly",
+			"Practice vocabulary building through word lists",
+			"Focus on grammar rules and their applications",
+			"Improve reading speed for comprehension passages"
+		]
+	}
+];
+---
+
+<Layout title="SSC CHSL Syllabus 2025 - Complete Tier-wise Syllabus | Eduware">
+	<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+		<!-- Breadcrumb -->
+		<nav class="flex mb-8" aria-label="Breadcrumb">
+			<ol class="inline-flex items-center space-x-1 md:space-x-3">
+				<li class="inline-flex items-center">
+					<a href="/" class="text-gray-700 hover:text-blue-600">Home</a>
+				</li>
+				<li>
+					<div class="flex items-center">
+						<span class="mx-2 text-gray-400">/</span>
+						<a href="/category" class="text-gray-700 hover:text-blue-600">Categories</a>
+					</div>
+				</li>
+				<li>
+					<div class="flex items-center">
+						<span class="mx-2 text-gray-400">/</span>
+						<a href="/category/ssc-exams" class="text-gray-700 hover:text-blue-600">SSC Exams</a>
+					</div>
+				</li>
+				<li>
+					<div class="flex items-center">
+						<span class="mx-2 text-gray-400">/</span>
+						<a href="/category/ssc-exams/ssc-chsl" class="text-gray-700 hover:text-blue-600">SSC CHSL</a>
+					</div>
+				</li>
+				<li aria-current="page">
+					<div class="flex items-center">
+						<span class="mx-2 text-gray-400">/</span>
+						<span class="text-gray-500">Syllabus</span>
+					</div>
+				</li>
+			</ol>
+		</nav>
+
+		<!-- Header -->
+		<div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white mb-8">
+			<h1 class="text-4xl font-bold mb-4">SSC CHSL Syllabus 2025</h1>
+			<p class="text-xl mb-4">Complete Tier-wise Syllabus & Study Plan</p>
+			<div class="flex flex-wrap gap-4">
+				<div class="bg-white/20 px-4 py-2 rounded-lg">
+					<span class="text-sm">Tier 1: 100 Questions</span>
+				</div>
+				<div class="bg-white/20 px-4 py-2 rounded-lg">
+					<span class="text-sm">Tier 2: Descriptive</span>
+				</div>
+				<div class="bg-white/20 px-4 py-2 rounded-lg">
+					<span class="text-sm">Tier 3: Skill Test</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Tier 1 Syllabus -->
+		<div class="bg-white rounded-lg shadow-md p-6 mb-8">
+			<div class="flex items-center justify-between mb-6">
+				<h2 class="text-2xl font-bold text-blue-600">{syllabusData.tier1.name}</h2>
+				<div class="text-right text-sm text-gray-600">
+					<div>{syllabusData.tier1.duration} | {syllabusData.tier1.questions} | {syllabusData.tier1.marks}</div>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+				{syllabusData.tier1.subjects.map(subject => (
+					<div class="border border-gray-200 rounded-lg p-4">
+						<div class="flex items-center justify-between mb-4">
+							<h3 class="text-xl font-semibold text-gray-900">{subject.name}</h3>
+							<div class="text-sm text-gray-600">
+								{subject.questions} Questions | {subject.marks} Marks
+							</div>
+						</div>
+						
+						<div class="space-y-4">
+							{subject.topics.map(topic => (
+								<div>
+									<h4 class="font-medium text-gray-800 mb-2">{topic.category}</h4>
+									<div class="flex flex-wrap gap-1">
+										{topic.items.map(item => (
+											<span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">{item}</span>
+										))}
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+
+		<!-- Tier 2 Syllabus -->
+		<div class="bg-white rounded-lg shadow-md p-6 mb-8">
+			<div class="flex items-center justify-between mb-6">
+				<h2 class="text-2xl font-bold text-green-600">{syllabusData.tier2.name}</h2>
+				<div class="text-right text-sm text-gray-600">
+					<div>{syllabusData.tier2.duration} | {syllabusData.tier2.marks} | {syllabusData.tier2.mode}</div>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+				{syllabusData.tier2.subjects.map(subject => (
+					<div class="border border-gray-200 rounded-lg p-4">
+						<div class="flex items-center justify-between mb-4">
+							<h3 class="text-xl font-semibold text-gray-900">{subject.name}</h3>
+							<div class="text-sm text-gray-600">{subject.marks} Marks</div>
+						</div>
+						
+						<div class="space-y-4">
+							{subject.topics.map(topic => (
+								<div>
+									<h4 class="font-medium text-gray-800 mb-2">{topic.category}</h4>
+									<div class="flex flex-wrap gap-1">
+										{topic.items.map(item => (
+											<span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">{item}</span>
+										))}
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				))}
+			</div>
+
+			<div class="mt-6 bg-green-50 border border-green-200 rounded-lg p-4">
+				<h4 class="font-semibold text-green-800 mb-2">📝 Important Note for Tier 2</h4>
+				<ul class="list-disc list-inside text-green-700 space-y-1 text-sm">
+					<li>Questions will be in Hindi and English (except for English language paper)</li>
+					<li>Candidates can choose to write in Hindi or English</li>
+					<li>Minimum qualifying marks: 33% for General, 30% for OBC, 25% for SC/ST</li>
+					<li>This is a qualifying paper only, marks won't be added to final merit</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Tier 3 Details -->
+		<div class="bg-white rounded-lg shadow-md p-6 mb-8">
+			<h2 class="text-2xl font-bold text-purple-600 mb-6">{syllabusData.tier3.name}</h2>
+			
+			<div class="space-y-4">
+				{syllabusData.tier3.tests.map(test => (
+					<div class="border border-gray-200 rounded-lg p-4">
+						<h3 class="text-lg font-semibold text-gray-900 mb-2">{test.post}</h3>
+						<div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+							<div>
+								<span class="font-medium text-gray-700">Test Type:</span>
+								<p class="text-gray-600">{test.test}</p>
+							</div>
+							<div>
+								<span class="font-medium text-gray-700">Requirement:</span>
+								<p class="text-gray-600">{test.requirement}</p>
+							</div>
+							<div>
+								<span class="font-medium text-gray-700">Duration:</span>
+								<p class="text-gray-600">{test.duration}</p>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+
+			<div class="mt-6 bg-purple-50 border border-purple-200 rounded-lg p-4">
+				<h4 class="font-semibold text-purple-800 mb-2">⌨️ Typing Test Tips</h4>
+				<ul class="list-disc list-inside text-purple-700 space-y-1 text-sm">
+					<li>Practice typing daily to improve speed and accuracy</li>
+					<li>Use online typing tools and software for practice</li>
+					<li>Focus on proper finger placement and posture</li>
+					<li>Accuracy is more important than speed - avoid too many errors</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Study Plan -->
+		<div class="bg-white rounded-lg shadow-md p-6 mb-8">
+			<h2 class="text-2xl font-bold text-orange-600 mb-6">3-Month Study Plan</h2>
+			
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				{studyPlan["3_months"].map((month, index) => (
+					<div class="border border-gray-200 rounded-lg p-4">
+						<div class="flex items-center mb-4">
+							<div class="bg-orange-100 text-orange-800 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm mr-3">
+								{index + 1}
+							</div>
+							<div>
+								<h3 class="text-lg font-semibold text-gray-900">{month.month}</h3>
+								<p class="text-sm text-gray-600">{month.focus}</p>
+							</div>
+						</div>
+						
+						<ul class="space-y-2">
+							{month.topics.map(topic => (
+								<li class="flex items-start">
+									<span class="text-orange-500 mr-2 mt-1">•</span>
+									<span class="text-sm text-gray-700">{topic}</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</div>
+
+		<!-- Preparation Tips -->
+		<div class="bg-white rounded-lg shadow-md p-6 mb-8">
+			<h2 class="text-2xl font-bold text-red-600 mb-6">Subject-wise Preparation Tips</h2>
+			
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+				{preparationTips.map(tip => (
+					<div class="border border-gray-200 rounded-lg p-4">
+						<h3 class="text-lg font-semibold text-gray-900 mb-3">{tip.subject}</h3>
+						<ul class="space-y-2">
+							{tip.tips.map(tipItem => (
+								<li class="flex items-start">
+									<span class="text-red-500 mr-2 mt-1">•</span>
+									<span class="text-sm text-gray-700">{tipItem}</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</div>
+
+		<!-- Important Resources -->
+		<div class="bg-white rounded-lg shadow-md p-6">
+			<h2 class="text-2xl font-bold text-gray-900 mb-6">Important Resources</h2>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+				<a href="/questions?tag=chsl" class="bg-blue-50 hover:bg-blue-100 p-4 rounded-lg text-center transition-colors">
+					<div class="text-2xl mb-2">❓</div>
+					<div class="font-semibold text-blue-800">Practice Questions</div>
+					<div class="text-sm text-blue-600">Solve topic-wise questions</div>
+				</a>
+				
+				<a href="/blog?tag=chsl" class="bg-green-50 hover:bg-green-100 p-4 rounded-lg text-center transition-colors">
+					<div class="text-2xl mb-2">📚</div>
+					<div class="font-semibold text-green-800">Study Materials</div>
+					<div class="text-sm text-green-600">Comprehensive notes</div>
+				</a>
+				
+				<a href="#" class="bg-purple-50 hover:bg-purple-100 p-4 rounded-lg text-center transition-colors">
+					<div class="text-2xl mb-2">📝</div>
+					<div class="font-semibold text-purple-800">Mock Tests</div>
+					<div class="text-sm text-purple-600">Full-length practice tests</div>
+				</a>
+				
+				<a href="#" class="bg-orange-50 hover:bg-orange-100 p-4 rounded-lg text-center transition-colors">
+					<div class="text-2xl mb-2">📄</div>
+					<div class="font-semibold text-orange-800">Previous Papers</div>
+					<div class="text-sm text-orange-600">Last 10 years papers</div>
+				</a>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.transition-colors {
+		transition: background-color 0.2s ease-in-out;
+	}
+</style>
