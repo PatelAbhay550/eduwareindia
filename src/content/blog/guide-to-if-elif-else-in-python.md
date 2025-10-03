@@ -1,5 +1,5 @@
 ---
-title: 'Python Conditional Statements Explained: A Beginner's Guide to If, Elif, and Else'
+title: 'Python Conditional Statements Explained: A Beginner Guide to If, Elif, and Else'
 description: 'Learn the fundamentals of conditional logic in Python. This guide breaks down how to use the if, elif, and else statements with simple explanations and clear examples, perfect for beginners.'
 pubDate: 'October 03 2025'
 heroImage: '../../assets/ifelifelsepython.png'
