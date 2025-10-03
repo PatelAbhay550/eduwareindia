@@ -24,7 +24,8 @@ export const CATEGORIES = [
   'Class 12',
   'Class 11',
   'Class 10',
-  'Class 9'
+  'Class 9',
+  'Python Programming'
 ] as const;
 
 export type Category = typeof CATEGORIES[number];
