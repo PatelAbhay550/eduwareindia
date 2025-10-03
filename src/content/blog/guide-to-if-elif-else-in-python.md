@@ -49,7 +49,7 @@ else:
     print("The weather is clear.")
 ```
 
-Here, `is_raining` is `False`. The if condition is not met, so the first `print()` statement is skipped. The program then moves to the `else` block and executes its code, printing "The weather is clear."
+Here, `is_raining` is `False`. The if condition is not met, so the first `print()` statement is skipped. The program then moves to the `else` block and executes its code, printing <mark>"The weather is clear."</mark>
 
 An `if/else` structure guarantees that one of the two blocks of code will always run.
 
